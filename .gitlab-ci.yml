@@ -1,0 +1,18 @@
+include:
+  - remote: http://gitlab.shopzilla.com/terraform/pipeline-templates/-/raw/master/template.gitlab-ci.yml
+
+stages:
+  - init
+  - validate
+  - build
+  - deploy
+  - cleanup
+
+build:
+  extends: .build
+
+deploy:
+ extends: .deploy
+ dependencies:
+   - build
+
