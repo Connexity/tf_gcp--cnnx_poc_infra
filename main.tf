@@ -19,3 +19,4 @@ module "project_globals" {
 module "infrastructure" {
   source = "./infrastructure"
 }
+
