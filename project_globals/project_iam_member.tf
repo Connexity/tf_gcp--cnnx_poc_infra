@@ -47,3 +47,9 @@ resource "google_project_iam_member" "SA_gce-sa--cnnx-poc-infra--monitoring_view
   role = "roles/monitoring.viewer"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_terraform--cnnx-stage-ta--iam_serviceAccountAdmin" {
+  member = "serviceAccount:terraform@cnnx-stage-ta.iam.gserviceaccount.com"
+  role = "roles/iam.serviceAccountAdmin"
+  project = "${var.gcp_project}"
+}
