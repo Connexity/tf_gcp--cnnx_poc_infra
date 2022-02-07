@@ -72,7 +72,7 @@ resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--compute_admi
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--compute_admin" {
+resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--storage_admin" {
   member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/storage.admin"
   project = "${var.gcp_project}"
