@@ -20,3 +20,7 @@ module "infrastructure" {
   source = "./infrastructure"
 }
 
+module "sysops" {
+  source = "./sysops"
+}
+
