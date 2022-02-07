@@ -14,7 +14,7 @@ data "google_iam_policy" "sysops-objectadmin_sysops-test_cnnx-poc-infra" {
   binding {
     role = "roles/storage.objectAdmin"
     members = [
-      "member:pharrison@connexity.com",
+      "user:pharrison@connexity.com",
     ]
   }
 }
