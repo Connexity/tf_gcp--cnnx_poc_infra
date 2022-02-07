@@ -12,7 +12,7 @@ resource "google_storage_bucket" "sysops-test_cnnx-poc-infra" {
 
 data "google_iam_policy" "sysops-objectadmin_sysops-test_cnnx-poc-infra" {
   binding {
-    role = "roles/storage.objectAdmin"
+    role = "roles/storage.admin"
     members = [
       "user:pharrison@connexity.com",
     ]
