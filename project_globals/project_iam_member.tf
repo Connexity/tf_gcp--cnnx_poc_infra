@@ -53,3 +53,21 @@ resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--iam_serviceA
   role = "roles/iam.serviceAccountAdmin"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--editor" {
+  member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/editor"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--resourcemanager_projectIamAdmin" {
+  member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/resourcemanager.projectIamAdmin"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--compute_admin" {
+  member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/compute.admin"
+  project = "${var.gcp_project}"
+}
