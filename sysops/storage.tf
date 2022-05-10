@@ -10,14 +10,6 @@ resource "google_storage_bucket" "sysops-test_cnnx-poc-infra" {
   }
 }
 
-data "google_iam_policy" "sysops-objectadmin_sysops-test_cnnx-poc-infra" {
-  binding {
-    role = "roles/storage.admin"
-    members = [
-      "user:pharrison@connexity.com",
-    ]
-  }
-}
 
 resource "google_storage_bucket_iam_policy" "policy" {
   bucket = google_storage_bucket.sysops-test_cnnx-poc-infra.name
