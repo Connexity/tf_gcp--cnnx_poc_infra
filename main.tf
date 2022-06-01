@@ -24,3 +24,6 @@ module "sysops" {
   source = "./sysops"
 }
 
+module "compute" {
+  source = "./compute"
+}
