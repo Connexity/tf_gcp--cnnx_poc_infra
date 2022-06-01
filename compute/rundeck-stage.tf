@@ -20,7 +20,7 @@ resource "google_compute_instance" "rundeck-stage" {
   }
 
   network_interface {
-    subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1""
+    subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
     subnetwork_project = "cnnx-infra-networking"
   }
 
