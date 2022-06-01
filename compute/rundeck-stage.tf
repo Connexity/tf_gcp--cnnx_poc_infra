@@ -5,8 +5,10 @@ resource "google_compute_instance" "rundeck-stage" {
   tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
 
   boot_disk {
-    size        = "50"
-    source      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2004-focal-v20210413"
+    initialize_params {
+      size        = "50"
+      image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2004-focal-v20210413"
+    }
   }
 
   labels = {
