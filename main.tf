@@ -18,6 +18,7 @@ module "project_globals" {
 
 module "infrastructure" {
   source = "./infrastructure"
+  gcp_project = "${var.gcp_project}"
 }
 
 module "sysops" {
