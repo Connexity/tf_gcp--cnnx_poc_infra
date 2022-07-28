@@ -1,3 +1,5 @@
+variable "gcp_project" {}
+
 resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   name = "cnnx-poc-infra"
   project = "${var.gcp_project}" 
