@@ -11,6 +11,13 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
     zone = "us-central1-b"
   }
 
+  cluster {
+    cluster_id   = "cnnx-poc-infra-c2"
+    num_nodes    = 1
+    storage_type = "SSD"
+    zone = "us-central1-c"
+  }
+
   labels = {
     owner = "infrastructure"
     app = "test-app"
