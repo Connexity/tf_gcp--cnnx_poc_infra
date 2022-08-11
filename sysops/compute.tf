@@ -14,7 +14,7 @@ resource "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-
   machine_type    = "e2-highmem-4"
 
   disk {
-    source_image      = "projects/cnnx-infra-os-images/global/images/family/cnnx-ubuntu-2004-lts"
+    source_image      = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
     auto_delete       = true
     boot              = true
   }
