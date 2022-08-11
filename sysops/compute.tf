@@ -49,6 +49,7 @@ resource "google_compute_instance_template" "test-it-stage" {
       source_image = self_link
       disk_type = "pd-ssd"
       disk_size_gb = "150"
+    }
 
     network_interface {
       subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
