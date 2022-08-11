@@ -32,10 +32,34 @@ resource "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-
    
 }
 
-resource "google_compute_disk" "test-node-1-index-disk-" {
+resource "google_compute_disk" "test-it-stage" {
     count   = "${var.it_node_count}"
-    name    = "test-node-1-index-disk-${count.index}-data"
+    name    = "test-it-stage${count.index}-1"
     type    = "pd-standard"
     zone    = "us-central1-c"
     size    = "5"
 }
+
+resource "google_compute_instance" "test-it-stage" {
+    count = "${var.node_count}"
+    name = "test-it-stage${count.index}-1"
+    machine_type = "${var.machine_type}"
+    zone = "${var.zone}"
+
+    boot_disk {
+    initialize_params {
+    image = "${var.image}"
+    }
+   }
+    attached_disk {
+        source      = "${element(google_compute_disk.test-it-stage.*.self_link, count.index)}"
+        device_name = "${element(google_compute_disk.test-it-stage.*.name, count.index)}"
+   }
+
+    network_interface {
+      subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-infra-admin-gce-1"
+      subnetwork_project = "cnnx-infra-networking"
+    } 
+
+}
+
