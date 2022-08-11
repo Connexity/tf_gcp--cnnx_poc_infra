@@ -1,4 +1,5 @@
 variable "it_node_count" {
+
   default = "3"
  }
 
@@ -11,7 +12,7 @@ resource "google_compute_instance" "test-it-stage" {
     tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
 
     boot_disk {
-    device_name = name
+    device_name = google_compute_instance.test-it-stage.name
     initialize_params {
     image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
     
