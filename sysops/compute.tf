@@ -3,6 +3,14 @@ variable "it_node_count" {
   default = "3"
  }
 
+resource "google_compute_disk" "test-it-stage" {
+    count   = "${var.it_node_count}"
+    name    = "${format("test-it-stage%03d-1", count.index + 1)}"
+    type    = "pd-standard"
+    zone    = "us-central1-c"
+    size    = "5"
+}
+
 resource "google_compute_instance" "test-it-stage" {
     count = "${var.it_node_count}"
     name = "${format("test-it-stage%03d", count.index + 1)}"
