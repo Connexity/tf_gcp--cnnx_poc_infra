@@ -21,7 +21,7 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    for_each var.it_names
+    for_each = var.it_names
     name = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
