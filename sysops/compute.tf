@@ -46,6 +46,8 @@ resource "google_compute_instance" "test-it-stage" {
     machine_type = "e2-highmem-4"
     zone = "us-central1-c"
 
+    tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
+    
     boot_disk {
     initialize_params {
     image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
@@ -57,7 +59,7 @@ resource "google_compute_instance" "test-it-stage" {
    }
 
     network_interface {
-      subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-infra-admin-gce-1"
+      subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       subnetwork_project = "cnnx-infra-networking"
     } 
 
