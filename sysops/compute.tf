@@ -2,7 +2,7 @@ variable "it_node_count" {
   default = "3"
  }
 
-source "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-ssd-usc1" {
+resource "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-ssd-usc1" {
   name          = "cnnx-ubuntu-20-e2-highmem-50-150-ssd-usc1"
   description   = "template for solr it 150 ssd attached"
 
