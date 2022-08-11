@@ -1,5 +1,5 @@
 resource "google_compute_disk" "test-it-stage" {
-    for_each = toset(["test-it-stage001-1", "test-it-stage002-1", "test-it-stage003-1"])
+    for_each = toset(["test-it-stage001-1", "test-it-stage003-1", "test-it-stage005-1"])
     name = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
@@ -11,7 +11,7 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    for_each = toset(["test-it-stage001", "test-it-stage002", "test-it-stage003"])
+    for_each = toset(["test-it-stage001", "test-it-stage003", "test-it-stage005"])
     name = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
