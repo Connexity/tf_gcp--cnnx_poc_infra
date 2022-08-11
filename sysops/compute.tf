@@ -53,7 +53,8 @@ resource "google_compute_instance" "test-it-stage" {
     }
     
     attached_disk {
-        source      = "${element(google_compute_disk.test-it-stage.*.self_link, count.index)}"
+        for_each = var.it_attached_disk_names
+        source = google_compute_disk.test-it-stage.name
     }
    
     network_interface {
