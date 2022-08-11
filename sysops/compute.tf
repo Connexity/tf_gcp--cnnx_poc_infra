@@ -22,9 +22,11 @@ resource "google_compute_instance" "test-it-stage" {
     boot_disk {
     device_name = "${format("test-it-stage%03d", count.index + 1)}"
     initialize_params {
-    image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
-    
+    image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts" 
     }
+    attached_disk {
+        source      = "${element(google_compute_disk.test-it-stage.*.self_link, count.index)}"
+   }
    }
 
     network_interface {
