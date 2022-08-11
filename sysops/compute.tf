@@ -69,6 +69,4 @@ resource "google_compute_instance_from_template" "test-it-stage001" {
 
   source_instance_template = google_compute_instance_template.test-it-stage.id
 
-  attached_disk {
-
 }
