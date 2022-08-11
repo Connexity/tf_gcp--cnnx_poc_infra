@@ -42,7 +42,7 @@ resource "google_compute_instance" "test-it-stage" {
     }
     
     attached_disk {
-        source = "${element(google_compute_disk.test-it-stage.*.self_link, each.value)}"
+        source = values(google_compute_disk.test-it-stage)[*].self_link
     }
    
     network_interface {
