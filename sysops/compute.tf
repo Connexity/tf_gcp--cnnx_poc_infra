@@ -1,6 +1,6 @@
 variable "it_node_count" {
 
-  default = "5"
+  default = "4"
  }
 
 resource "google_compute_disk" "test-it-stage" {
