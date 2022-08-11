@@ -48,7 +48,7 @@ resource "google_compute_instance" "test-it-stage" {
 
     boot_disk {
     initialize_params {
-    image = "${var.image}"
+    image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
     }
    }
     attached_disk {
