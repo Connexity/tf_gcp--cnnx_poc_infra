@@ -35,7 +35,6 @@ resource "google_compute_instance" "test-it-stage" {
     tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
 
     boot_disk {
-      for_each = toset(["test-it-stage001", "test-it-stage002", "test-it-stage003"])
       device_name = each.value
       initialize_params {
       image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts" 
@@ -43,8 +42,7 @@ resource "google_compute_instance" "test-it-stage" {
     }
     
     attached_disk {
-        for_each = toset(["test-it-stage001-1", "test-it-stage002-1", "test-it-stage003-1"])
-        source = each.value
+        source = google_compute_disk.test-it-stage[each.value]
     }
    
     network_interface {
