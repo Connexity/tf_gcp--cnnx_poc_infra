@@ -19,8 +19,8 @@ resource "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-
     boot              = true
   }
 
-  metadata {
-    env    = "staging"
+  metadata = {
+    env = "staging"
   }
 
   metadata_startup_script = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
