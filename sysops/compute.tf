@@ -9,7 +9,8 @@ variable "it_attached_disk_names" {
  }
 
 resource "google_compute_disk" "test-it-stage" {
-    for_each = var.it_attached_disk_namesname = each.value
+    for_each = var.it_attached_disk_names
+    name = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
     size    = "150"
@@ -20,7 +21,8 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    for_each var.it_namesname = each.value
+    for_each var.it_names
+    name = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
 
