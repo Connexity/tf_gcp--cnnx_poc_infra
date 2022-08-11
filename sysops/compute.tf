@@ -54,7 +54,7 @@ resource "google_compute_instance" "test-it-stage" {
     
     attached_disk {
         for_each = var.it_attached_disk_names
-        source = google_compute_disk.test-it-stage.name
+        source = google_compute_disk.test-it-stage[each.value]
     }
    
     network_interface {
