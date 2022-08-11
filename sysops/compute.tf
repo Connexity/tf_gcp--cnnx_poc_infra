@@ -20,7 +20,6 @@ resource "google_compute_disk" "test-it-stage" {
 resource "google_compute_instance_template" "test-it-stage" {
     name = "test-it-stage"
     machine_type = "e2-highmem-4"
-    zone = "us-central1-a"
 
     labels = {
       app   = "test"
