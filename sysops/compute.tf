@@ -1,5 +1,21 @@
+locals {
+  it_names = toset([
+    "test-it-stage001", 
+    "test-it-stage003", 
+    "test-it-stage005"
+   ])
+}
+
+locals {
+  it_attached_disk_names = toset([
+    "test-it-stage001-1",
+    "test-it-stage003-1",
+    "test-it-stage005-1"
+   ])
+}
+
 resource "google_compute_disk" "test-it-stage" {
-    for_each = toset(["test-it-stage001-1", "test-it-stage003-1", "test-it-stage005-1"])
+    for_each = local.it_names_attached_disk_names
     name = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
@@ -11,7 +27,7 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    for_each = toset(["test-it-stage001", "test-it-stage003", "test-it-stage005"])
+    for_each = local.it_names
     name = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
@@ -41,9 +57,6 @@ resource "google_compute_instance" "test-it-stage" {
       }
     }
     
-    attached_disk {
-        source = "${each.key}-1"
-    }
    
     network_interface {
       subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
