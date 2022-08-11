@@ -1,11 +1,15 @@
-variable "it_node_count" {
+variable "it_names" {
+  type = set(string)
+  default = ["test-it-stage001","test-it-stage002","test-it-stage003"]
+ }
 
-  default = "4"
+variable "it_attached_disk_names" {
+  type = set(string)
+  default = ["test-it-stage001-1","test-it-stage002-1","test-it-stage003-1"]
  }
 
 resource "google_compute_disk" "test-it-stage" {
-    count   = "${var.it_node_count}"
-    name    = "${format("test-it-stage%03d-1", count.index + 1)}"
+    for_each = var.it_attached_disk_namesname = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
     size    = "150"
@@ -16,8 +20,7 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    count = "${var.it_node_count}"
-    name = "${format("test-it-stage%03d", count.index + 1)}"
+    for_each var.it_namesname = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
 
@@ -40,7 +43,7 @@ resource "google_compute_instance" "test-it-stage" {
     tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
 
     boot_disk {
-      device_name = "${format("test-it-stage%03d", count.index + 1)}"
+      for_each var.it_namesdevice_name = each.value
       initialize_params {
       image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts" 
       }
