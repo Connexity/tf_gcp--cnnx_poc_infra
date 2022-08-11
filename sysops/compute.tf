@@ -15,7 +15,7 @@ locals {
 }
 
 resource "google_compute_disk" "test-it-stage" {
-    for_each = local.it_names_attached_disk_names
+    for_each = local.it_attached_disk_names
     name = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
