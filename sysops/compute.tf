@@ -13,6 +13,7 @@ resource "google_compute_instance" "test-it-stage" {
 
     boot_disk {
     device_name = google_compute_instance.test-it-stage{count.index}
+
     initialize_params {
     image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
     
