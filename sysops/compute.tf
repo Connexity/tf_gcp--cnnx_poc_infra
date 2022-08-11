@@ -7,7 +7,7 @@ resource "google_compute_disk" "test-it-stage" {
     count   = "${var.it_node_count}"
     name    = "${format("test-it-stage%03d-1", count.index + 1)}"
     type    = "pd-ssd"
-    zone    = "us-central1-c"
+    zone    = "us-central1-a"
     size    = "150"
     labels = {
       app = "test"
