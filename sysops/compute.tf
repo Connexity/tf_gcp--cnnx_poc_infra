@@ -24,10 +24,12 @@ resource "google_compute_instance_template" "cnnx-ubuntu-20-e2-highmem-4-50-150-
   }
 
   metadata_startup_script = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
-   
+
   network_interface {
-    network = "default"
+    subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-infra-admin-gce-1"
+    subnetwork_project = "cnnx-infra-networking"
   }
+   
 }
 
 resource "google_compute_disk" "test-node-1-index-disk-" {
