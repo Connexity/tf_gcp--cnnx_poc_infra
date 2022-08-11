@@ -4,7 +4,7 @@ variable "it_node_count" {
 
 resource "google_compute_instance" "test-it-stage" {
     count = "${var.it_node_count}"
-    name = "${format("test-it-stage%03d", count.index)}"
+    name = "${format("test-it-stage%03d", count.index + 1)}"
     machine_type = "e2-highmem-4"
     zone = "us-central1-c"
 
