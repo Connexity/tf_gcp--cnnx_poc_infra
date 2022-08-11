@@ -1,15 +1,5 @@
-variable "it_names" {
-  type = set(string)
-  default = ["test-it-stage001","test-it-stage002","test-it-stage003"]
- }
-
-variable "it_attached_disk_names" {
-  type = set(string)
-  default = ["test-it-stage001-1","test-it-stage002-1","test-it-stage003-1"]
- }
-
 resource "google_compute_disk" "test-it-stage" {
-    foreach = var.it_attached_disk_names
+    for_each = toset(["test-it-stage001-1"],["test-it-stage002-1"],["test-it-stage003-1"])
     name = each.value
     type    = "pd-ssd"
     zone    = "us-central1-a"
@@ -21,7 +11,7 @@ resource "google_compute_disk" "test-it-stage" {
 }
 
 resource "google_compute_instance" "test-it-stage" {
-    foreach = var.it_names
+    for_each = toset(["test-it-stage001"],["test-it-stage002"],["test-it-stage003"])
     name = each.value
     machine_type = "e2-highmem-4"
     zone = "us-central1-a"
@@ -53,8 +43,8 @@ resource "google_compute_instance" "test-it-stage" {
     }
     
     attached_disk {
-        for_each = var.it_attached_disk_names
-        source = google_compute_disk.test-it-stage[each.value]
+        for_each = toset(["test-it-stage001-1"],["test-it-stage002-1"],["test-it-stage003-1"])
+        source = each.value
     }
    
     network_interface {
