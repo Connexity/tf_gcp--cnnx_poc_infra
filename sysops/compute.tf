@@ -44,7 +44,12 @@ resource "google_compute_instance_template" "test-it-stage" {
       auto_delete       = true
       boot              = true
       }
-   
+    
+    disk {
+      source_image = self_link
+      disk_type = "pd-ssd"
+      disk_size_gb = "150"
+
     network_interface {
       subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       subnetwork_project = "cnnx-infra-networking"
@@ -63,5 +68,7 @@ resource "google_compute_instance_from_template" "test-it-stage001" {
   zone = "us-central1-a"
 
   source_instance_template = google_compute_instance_template.test-it-stage.id
+
+  attached_disk {
 
 }
