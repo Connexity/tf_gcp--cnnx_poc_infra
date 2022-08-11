@@ -43,8 +43,8 @@ resource "google_compute_disk" "test-it-stage" {
 resource "google_compute_instance" "test-it-stage" {
     count = "${var.node_count}"
     name = "test-it-stage${count.index}-1"
-    machine_type = "${var.machine_type}"
-    zone = "${var.zone}"
+    machine_type = "e2-highmem-4"
+    zone = "us-central1-c"
 
     boot_disk {
     initialize_params {
