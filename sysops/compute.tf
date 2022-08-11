@@ -1,22 +1,3 @@
-locals {
-  it_attached_disk_names = toset([
-    "test-it-stage001-1",
-    "test-it-stage002-1",
-   ])
-}
-
-resource "google_compute_disk" "test-it-stage" {
-    for_each = local.it_attached_disk_names
-    name = each.value
-    type    = "pd-ssd"
-    zone    = "us-central1-a"
-    size    = "150"
-    labels = {
-      app = "test"
-      owner = "sysops"
-    }
-}
-
 resource "google_compute_instance_template" "test-it-stage" {
     name = "test-it-stage"
     machine_type = "e2-highmem-4"
@@ -68,9 +49,5 @@ resource "google_compute_instance_from_template" "test-it-stage001" {
   zone = "us-central1-a"
 
   source_instance_template = google_compute_instance_template.test-it-stage.id
-
-  attached_disk {
-      source      = "test-it-stage001-1"
-  }
 
 }
