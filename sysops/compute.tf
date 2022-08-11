@@ -1,7 +1,6 @@
 locals {
   it_attached_disk_names = toset([
-    "test-it-stage001-1",
-    "test-it-stage002-1"
+    "test-it-stage001-1"
    ])
 }
 
@@ -69,13 +68,3 @@ resource "google_compute_instance_from_template" "test-it-stage001" {
   }
 }
 
-resource "google_compute_instance_from_template" "test-it-stage002" {
-  name = "test-it-stage002"
-  zone = "us-central1-a"
-
-  source_instance_template = google_compute_instance_template.test-it-stage.id
-
-  attached_disk {
-      source      = "test-it-stage002-1"
-  }
-}
