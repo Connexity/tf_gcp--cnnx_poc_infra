@@ -12,7 +12,7 @@ resource "google_compute_instance" "test-it-stage" {
     tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
 
     boot_disk {
-    device_name = "${element(google_compute_instance.test-it-stage.name, count.index)}"
+    device_name = google_compute_instance.test-it-stage.name[count.index]
     initialize_params {
     image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
     
