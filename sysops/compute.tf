@@ -2,7 +2,6 @@ locals {
   it_attached_disk_names = toset([
     "test-it-stage001-1",
     "test-it-stage002-1",
-    "test-it-stage003-1"
    ])
 }
 
