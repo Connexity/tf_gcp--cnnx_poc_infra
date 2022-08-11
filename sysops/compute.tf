@@ -46,8 +46,7 @@ resource "google_compute_instance_template" "test-it-stage" {
       }
     
     disk {
-      source_image = self_link
-      disk_type = "pd-ssd"
+      disk_type = "local-ssd"
       disk_size_gb = "150"
     }
 
