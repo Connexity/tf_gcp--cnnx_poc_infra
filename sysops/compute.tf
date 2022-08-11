@@ -24,10 +24,12 @@ resource "google_compute_instance" "test-it-stage" {
     initialize_params {
     image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts" 
     }
+   }
+    
     attached_disk {
         source      = "${element(google_compute_disk.test-it-stage.*.self_link, count.index)}"
    }
-   }
+   
 
     network_interface {
       subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
