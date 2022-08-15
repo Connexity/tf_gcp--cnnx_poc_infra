@@ -1,12 +1,11 @@
-locals {
-  it_attached_disk_names = toset([
-    "test-it-stage001-1"
-   ])
-}
+variable "it_node_count" {
+
+  default = "4"
+ }
 
 resource "google_compute_disk" "test-it-stage" {
-    for_each = local.it_attached_disk_names
-    name = each.value
+    count   = "${var.it_node_count}"
+    name    = "${format("test-it-stage%03d-1", count.index + 1)}"
     type    = "pd-ssd"
     zone    = "us-central1-a"
     size    = "150"
@@ -16,9 +15,11 @@ resource "google_compute_disk" "test-it-stage" {
     }
 }
 
-resource "google_compute_instance_template" "test-it-stage" {
-    name = "test-it-stage"
+resource "google_compute_instance" "test-it-stage" {
+    count = "${var.it_node_count}"
+    name = "${format("test-it-stage%03d", count.index + 1)}"
     machine_type = "e2-highmem-4"
+    zone = "us-central1-a"
 
     labels = {
       app   = "test"
@@ -28,7 +29,7 @@ resource "google_compute_instance_template" "test-it-stage" {
     service_account {
       email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
       scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-    }  
+    }
 
     shielded_instance_config {
       enable_integrity_monitoring = "true"
@@ -38,12 +39,17 @@ resource "google_compute_instance_template" "test-it-stage" {
 
     tags = ["allow-gce-lb", "allow-gce-usc1-stage", "allow-onprem"]
 
-    disk {
-      source_image      = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
-      auto_delete       = true
-      boot              = true
+    boot_disk {
+      device_name = "${format("test-it-stage%03d", count.index + 1)}"
+      initialize_params {
+      image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
       }
-    
+    }
+
+    attached_disk {
+        source      = "${google_compute_disk.test-it-stage.*.self_link[count.index]}"
+    }
+
     network_interface {
       subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       subnetwork_project = "cnnx-infra-networking"
@@ -56,15 +62,3 @@ resource "google_compute_instance_template" "test-it-stage" {
     metadata_startup_script = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
 
 }
-
-resource "google_compute_instance_from_template" "test-it-stage001" {
-  name = "test-it-stage001"
-  zone = "us-central1-a"
-
-  source_instance_template = google_compute_instance_template.test-it-stage.id
-
-  attached_disk {
-      source      = "test-it-stage001-1"
-  }
-}
-
