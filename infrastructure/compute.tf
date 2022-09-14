@@ -3,7 +3,9 @@ resource "google_compute_instance" "Instance_schedule-test01" {
     auto_delete = "true"
     device_name = "schedule-test01"
     mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/us-central1-a/disks/schedule-test01"
+    initialize_params {
+    image = "projects/cnnx-infra-osimages/global/images/family/cnnx-ubuntu-2004-lts"
+      }
   }
 
   can_ip_forward = "false"
@@ -17,18 +19,19 @@ resource "google_compute_instance" "Instance_schedule-test01" {
 
   labels = {
     env   = "staging"
-    owner = "syseng"
+    owner = "sysops"
   }
 
   machine_type = "e2-micro"
 
+  metadata = {
+    env                = "staging"
+    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
+  }
+
   name = "schedule-test01"
 
   network_interface {
-    network            = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
-    network_ip         = ""
-    queue_count        = "0"
-    stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
     subnetwork_project = "cnnx-infra-networking"
 }
