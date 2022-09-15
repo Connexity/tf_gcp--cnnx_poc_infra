@@ -1,5 +1,5 @@
 locals {
-  instances = ["jenkinsbuildstage101", "jenkinsbuildstage102", "jenkinsbuildstage103"]
+  instances = ["jenkinsbuildstage101", "jenkinsbuildstage103"]
 }
 
 resource "google_compute_instance" "compute_instance" {
