@@ -1,9 +1,9 @@
 locals {
-  instances = ["jenkinsbuildstage101", "jenkinsbuildstage102"]
+  jenkinsbuild_instances = ["jenkinsbuildstage101", "jenkinsbuildstage102"]
 }
 
-resource "google_compute_instance" "compute_instance" {
-  for_each = toset(local.instances)
+resource "google_compute_instance" "jenkinsbuild_compute_instance" {
+  for_each = toset(local.jenkinsbuild_instances)
   name = each.key
   machine_type = "e2-standard-4"
   zone         = "us-central1-a"
