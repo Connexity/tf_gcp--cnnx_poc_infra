@@ -11,5 +11,5 @@ resource "google_compute_instance_iam_policy" "jmeter-master-stage001-compute-ia
   project = "${var.gcp_project}"
   zone = google_compute_instance.instance_uimagetest-stage001.zone
   instance_name = google_compute_instance.instance_uimagetest-stage001.name
-  policy_data = data.google_iam_policy.instance_uimagetest-stage001.policy_data
+  policy_data = data.google_iam_policy.compute_stage_instance_admin.policy_data
 }
