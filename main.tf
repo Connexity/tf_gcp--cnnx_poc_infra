@@ -22,4 +22,5 @@ module "infrastructure" {
 
 module "sysops" {
   source = "./sysops"
+  gcp_project = "${var.gcp_project}"
 }
