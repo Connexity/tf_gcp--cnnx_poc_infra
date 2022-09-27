@@ -19,9 +19,9 @@ resource "google_compute_instance" "instance_uimagetest-stage001" {
     device_name = "uimagetest-stage001"
     mode        = "READ_WRITE"
     initialize_params {
-      size = "10"
+      size = "20"
       type = "pd-standard"
-      image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20210413"
+      image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20220905"
     }
   }
 
