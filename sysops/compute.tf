@@ -73,7 +73,7 @@ resource "google_compute_instance" "instance_uimagetest-stage002" {
   enable_display      = "false"
 
   labels = {
-    app   = "test1"
+    app   = "test2"
     owner = "sysops"
   }
 
