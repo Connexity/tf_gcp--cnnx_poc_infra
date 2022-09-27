@@ -19,7 +19,7 @@ resource "google_compute_instance" "instance_uimagetest-stage001" {
     device_name = "uimagetest-stage001"
     mode        = "READ_WRITE"
     initialize_params {
-      size = "25"
+      size = "30"
       type = "pd-standard"
       image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20210413"
     }
@@ -81,11 +81,6 @@ resource "google_compute_instance" "instance_uimagetest-stage002" {
     auto_delete = "true"
     device_name = "uimagetest-stage002"
     mode        = "READ_WRITE"
-    initialize_params {
-      size = "10"
-      type = "pd-standard"
-      image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20210413"
-    }
   }
 
   metadata = {
