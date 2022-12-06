@@ -83,9 +83,3 @@ resource "google_project_iam_member" "SA_gce_api--cnnx-poc-infra--compute_instan
   role = "roles/compute.instanceAdmin.v1"
   project = "${var.gcp_project}"
 }
-
-resource "google_project_iam_member" "GRP_cnnx-sysops-training--cnnx-poc-infra--owner" {
-  member = "group:cnnx-sysops-training@skimlinks.co.uk"
-  role = "roles/owner"
-  project = "${var.gcp_project}"
-}
