@@ -47,6 +47,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage001" {
     enable_secure_boot = "true"
   }
 
+  lifecycle.ignore_changes = ["attached_disk"]
   can_ip_forward      = "false"
   deletion_protection = "false"
   enable_display      = "false"
@@ -100,6 +101,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage002" {
     enable_secure_boot = "true"
   }
 
+  lifecycle.ignore_changes = ["attached_disk"]
   can_ip_forward      = "false"
   deletion_protection = "false"
   enable_display      = "false"
