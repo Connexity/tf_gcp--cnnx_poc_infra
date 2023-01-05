@@ -71,4 +71,5 @@ resource "google_compute_attached_disk" "attach_disk_gcemultidiskteststage001-sh
   zone = "us-central1-c"
   mode = "READ_WRITE"
   device_name = "persistent-disk-1"
+  depends_on = [google_compute_disk.gcedisk_gcemultidisktest-shared-disk]
 }
