@@ -4,6 +4,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage001" {
   project = "${var.gcp_project}"
   zone = "us-central1-c"
 
+
   tags = [
     "allow-onprem",
     "allow-gce-usc1-stage"
