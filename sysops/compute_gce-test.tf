@@ -63,6 +63,7 @@ resource "google_compute_disk" "gcedisk_gcemultidisktest-shared-disk" {
   size = 100
   physical_block_size_bytes = 4096
   multi_writer = true
+  depends_on = [google_compute_instance.instance_gcemultidiskteststage001]
 }
 
 resource "google_compute_attached_disk" "attach_disk_gcemultidiskteststage001-shared-disk" {
