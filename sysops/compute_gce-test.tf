@@ -47,7 +47,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage001" {
   }
 
   lifecycle {
-    ignore_changes = ["attached_disk"]
+    ignore_changes = [attached_disk]
   }
 
   can_ip_forward      = "false"
@@ -104,7 +104,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage002" {
   }
 
   lifecycle {
-    ignore_changes = ["attached_disk"]
+    ignore_changes = [attached_disk]
   }
 
   can_ip_forward      = "false"
