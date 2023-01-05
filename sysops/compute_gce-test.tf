@@ -53,6 +53,7 @@ resource "google_compute_instance" "instance_gcemultidiskteststage001" {
 
 resource "google_compute_disk" "gcedisk_gcemultidisktest-shared-disk" {
   provider = google-beta
+  project = "${var.gcp_project}"
   name  = "gcemultidisktest-shared-disk"
   type  = "pd-ssd"
   zone  = "us-central1-c"
@@ -67,6 +68,7 @@ resource "google_compute_disk" "gcedisk_gcemultidisktest-shared-disk" {
 }
 
 resource "google_compute_attached_disk" "attach_disk_gcemultidiskteststage001-shared-disk" {
+  project = "${var.gcp_project}"
   disk     = google_compute_disk.gcedisk_gcemultidisktest-shared-disk.id
   instance = google_compute_instance.instance_gcemultidiskteststage001.id
   zone = "us-central1-c"
