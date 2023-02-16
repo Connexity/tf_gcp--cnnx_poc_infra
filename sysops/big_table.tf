@@ -1,16 +1,16 @@
-### cnnx-prod-merchant-instance Start ###
+### cnnx-poc-infra-instance Start ###
 
-resource "google_bigtable_instance" "bigtable-cnnx-prod-merchant-instance" {
-  name = "cnnx-prod-merchant"
+resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
+  name = "cnnx-poc-infra"
   project = "${var.gcp_project}" 
   deletion_protection = true
   cluster {
-    cluster_id   = "cnnx-prod-merchant-c1"
+    cluster_id   = "cnnx-poc-infra-c1"
     storage_type = "SSD"
     zone = "us-central1-b"
     autoscaling_config {
       min_nodes = 1
-      max_nodes = 4
+      max_nodes = 2
       cpu_target = 70
     }
   }
@@ -25,15 +25,15 @@ resource "google_bigtable_instance" "bigtable-cnnx-prod-merchant-instance" {
   }
 }
 
-### cnnx-prod-merchant-instance End ###
+### cnnx-poc-infra-instance End ###
 
 
 
-### cnnx-prod-merchant-instance_offer-bid table Start ###
+### cnnx-poc-infra-instance_offer-bid table Start ###
 
-resource "google_bigtable_table" "table_bigtable-cnnx-prod-merchant-instance_offer-bid" {
+resource "google_bigtable_table" "table_bigtable-cnnx-poc-infra-instance_offer-bid" {
   name          = "offer-bid"
-  instance_name = google_bigtable_instance.bigtable-cnnx-prod-merchant-instance.name
+  instance_name = google_bigtable_instance.bigtable-cnnx-poc-infra-instance.name
   column_family {
     family = "o"
   }
@@ -44,9 +44,9 @@ resource "google_bigtable_table" "table_bigtable-cnnx-prod-merchant-instance_off
 }
 
 
-resource "google_bigtable_gc_policy" "table_bigtable-cnnx-prod-merchant-instance_offer-bid-mapping_policy" {
-  instance_name = google_bigtable_instance.bigtable-cnnx-prod-merchant-instance.name
-  table         = google_bigtable_table.table_bigtable-cnnx-prod-merchant-instance_offer-bid.name
+resource "google_bigtable_gc_policy" "table_bigtable-cnnx-poc-infra-instance_offer-bid-mapping_policy" {
+  instance_name = google_bigtable_instance.bigtable-cnnx-poc-infra-instance.name
+  table         = google_bigtable_table.table_bigtable-cnnx-poc-infra-instance_offer-bid.name
   column_family = "o"
 
   mode = "UNION"
@@ -60,13 +60,13 @@ resource "google_bigtable_gc_policy" "table_bigtable-cnnx-prod-merchant-instance
   }
 }
 
-### cnnx-prod-merchant-instance_offer-bid table End ###
+### cnnx-poc-infra-instance_offer-bid table End ###
 
 
 
 ### Big Table Table IAM Policy and Binding Start ###
 
-data "google_iam_policy" "bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_roles" {
+data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_roles" {
   binding {
     role = "roles/bigtable.user"
     members = [
@@ -75,39 +75,39 @@ data "google_iam_policy" "bigtable-cnnx-prod-merchant-instance_offer-bid_table_i
   }
 }
 
-resource "google_bigtable_table_iam_policy" "bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_policy" {
+resource "google_bigtable_table_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_policy" {
   project     = "${var.gcp_project}"
-  instance    = "cnnx-prod-merchant"
+  instance    = "cnnx-poc-infra"
   table       = "offer-bid"
-  policy_data = data.google_iam_policy.bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_roles.policy_data
+  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_roles.policy_data
 }
 
-data "google_iam_policy" "bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_custom_roles" {
+data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_roles" {
   binding {
-    role = "projects/cnnx-prod-merchant/roles/bigtable_backup"
+    role = "projects/cnnx-poc-infra/roles/bigtable_backup"
     members = [
       "serviceAccount:bigtable-backup-service@cnnx-prod-tracking.iam.gserviceaccount.com",
     ]
   }
 }
 
-resource "google_bigtable_table_iam_policy" "bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_custom_policy" {
+resource "google_bigtable_table_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_policy" {
   project     = "${var.gcp_project}"
-  instance    = "cnnx-prod-merchant"
+  instance    = "cnnx-poc-infra"
   table       = "offer-bid"
-  policy_data = data.google_iam_policy.bigtable-cnnx-prod-merchant-instance_offer-bid_table_iam_custom_roles.policy_data
+  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_roles.policy_data
 }
 
 ### Big Table Table IAM Policy and Binding End ###
 
 ### Big Table Table App Profile Start ###
 
-resource "google_bigtable_app_profile" "bigtable-cnnx-prod-merchant-instance-app-profile" {
-  instance       = google_bigtable_instance.bigtable-cnnx-prod-merchant-instance.name
+resource "google_bigtable_app_profile" "bigtable-cnnx-poc-infra-instance-app-profile" {
+  instance       = google_bigtable_instance.bigtable-cnnx-poc-infra-instance.name
   app_profile_id = "mops-v2"
 
   single_cluster_routing {
-    cluster_id                 = "cnnx-prod-merchant-c1"
+    cluster_id                 = "cnnx-poc-infra-c1"
     allow_transactional_writes = false
   }
 
