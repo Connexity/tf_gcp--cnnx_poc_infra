@@ -74,7 +74,7 @@ data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_r
     ]
   }
   binding {
-    role = "projects/cnnx-poc-merchant/roles/bigtable_backup"
+    role = "projects/cnnx-poc-infra/roles/bigtable_backup"
     members = [
       "serviceAccount:bigtable-backup-service@cnnx-prod-tracking.iam.gserviceaccount.com",
     ]
