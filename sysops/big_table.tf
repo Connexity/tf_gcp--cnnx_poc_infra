@@ -73,16 +73,6 @@ data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_r
       "serviceAccount:mops-v2@cnnx-prod-merchant.iam.gserviceaccount.com",
     ]
   }
-}
-
-resource "google_bigtable_table_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_policy" {
-  project     = "${var.gcp_project}"
-  instance    = "cnnx-poc-infra"
-  table       = "offer-bid"
-  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_roles.policy_data
-}
-
-data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_roles" {
   binding {
     role = "projects/cnnx-poc-infra/roles/bigtable_backup"
     members = [
@@ -91,11 +81,11 @@ data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_c
   }
 }
 
-resource "google_bigtable_table_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_policy" {
+resource "google_bigtable_table_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_policy" {
   project     = "${var.gcp_project}"
   instance    = "cnnx-poc-infra"
   table       = "offer-bid"
-  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_custom_roles.policy_data
+  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_roles.policy_data
 }
 
 ### Big Table Table IAM Policy and Binding End ###
