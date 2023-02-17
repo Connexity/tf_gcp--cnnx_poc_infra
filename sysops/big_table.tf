@@ -25,6 +25,21 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   }
 }
 
+data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_iam_roles" {
+  binding {
+    role = "projects/cnnx-poc-infra/roles/bigtable_backup"
+    members = [
+      "serviceAccount:bigtable-backup-service@cnnx-prod-tracking.iam.gserviceaccount.com",
+    ]
+  }
+}
+
+resource "google_bigtable_instance_iam_policy" "bigtable-cnnx-poc-infra-instance_iam_policy" {
+  project     = "${var.gcp_project}"
+  instance    = "cnnx-poc-infra"
+  policy_data = data.google_iam_policy.bigtable-cnnx-poc-infra-instance_iam_roles.policy_data
+}
+
 ### cnnx-poc-infra-instance End ###
 
 
@@ -71,12 +86,6 @@ data "google_iam_policy" "bigtable-cnnx-poc-infra-instance_offer-bid_table_iam_r
     role = "roles/bigtable.user"
     members = [
       "serviceAccount:mops-v2@cnnx-prod-merchant.iam.gserviceaccount.com",
-    ]
-  }
-  binding {
-    role = "projects/cnnx-poc-infra/roles/bigtable_backup"
-    members = [
-      "serviceAccount:bigtable-backup-service@cnnx-prod-tracking.iam.gserviceaccount.com",
     ]
   }
 }
