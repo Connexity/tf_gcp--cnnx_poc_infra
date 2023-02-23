@@ -32,11 +32,6 @@ resource "google_compute_instance" "instance_logdumpprod001" {
     subnetwork_project = "cnnx-infra-networking"
   }
 
-  service_account {
-    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com "
-    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-  }
-
   can_ip_forward      = "false"
   deletion_protection = "false"
   enable_display      = "false"
@@ -74,11 +69,6 @@ resource "google_compute_instance" "instance_logdumpprod002" {
     stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
     subnetwork_project = "cnnx-infra-networking"
-  }
-
-  service_account {
-    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com "
-    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
   shielded_instance_config {
