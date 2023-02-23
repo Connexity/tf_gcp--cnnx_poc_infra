@@ -33,7 +33,7 @@ resource "google_compute_instance" "instance_logdumpprod001" {
   }
 
   service_account {
-    email  = "logdump@cnnx-stage-tracking.iam.gserviceaccount.com"
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com "
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
@@ -77,7 +77,7 @@ resource "google_compute_instance" "instance_logdumpprod002" {
   }
 
   service_account {
-    email  = "logdump@cnnx-stage-tracking.iam.gserviceaccount.com"
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com "
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
@@ -96,7 +96,7 @@ data "google_iam_policy" "logdumpprod_cnnx-stage-tracking_iam_binding" {
   binding {
     role = "roles/compute.osLogin"
     members = [
-      "serviceAccount:logdump@cnnx-stage-tracking.iam.gserviceaccount.com",
+      "group:cnnx-marketplace-eng@skimlinks.co.uk",
     ]
   }
   binding {
