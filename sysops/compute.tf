@@ -6,7 +6,7 @@ resource "google_compute_instance" "instance_logdumppoc001" {
 
   tags = [
     "allow-onprem",
-    "allow-gce-usc1-prod",
+    "allow-gce-usc1-stage",
     "allow-gce-lb"
   ]
 
@@ -45,7 +45,7 @@ resource "google_compute_instance" "instance_logdumppoc001-eu" {
 
   tags = [
     "allow-onprem",
-    "allow-gce-euw1-prod",
+    "allow-gce-euw1-stage",
     "allow-gce-lb"
   ]
 
