@@ -1,18 +1,18 @@
-resource "google_compute_instance" "ubutest-stage" {
-  name = "ubuteststage001"
-  machine_type = "e2-small"
+resource "google_compute_instance" "test-stage-001" {
+  name = "teststage001"
+  machine_type = "e2-medium"
   zone         = "us-central1-a"
   tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
 
   boot_disk {
     initialize_params {
       size        = "50"
-      image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2204-jammy-v20230114"
+      image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2004-focal-v20210413"
     }
   }
 
   labels = {
-    app   = "ansible"
+    app   = "testing"
     owner = "syseng"
   }
 
