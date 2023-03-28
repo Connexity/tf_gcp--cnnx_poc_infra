@@ -7,4 +7,5 @@ resource "google_artifact_registry_repository" "cnnx-apt-focal-poc_cnnx-poc-infr
   labels = {
     "owner" = "sysops"
     "app" = "apt-repository"
+  }
 }
