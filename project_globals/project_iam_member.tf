@@ -78,6 +78,12 @@ resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--storage_admi
   project = "${var.gcp_project}"
 }
 
+resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--artifactregistry_admin" {
+  member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/artifactregistry.admin"
+  project = "${var.gcp_project}"
+}
+
 resource "google_project_iam_member" "SA_gce_api--cnnx-poc-infra--compute_instanceAdmin_v1" {
   member = "serviceAccount:service-832312746254@compute-system.iam.gserviceaccount.com"
   role = "roles/compute.instanceAdmin.v1"
