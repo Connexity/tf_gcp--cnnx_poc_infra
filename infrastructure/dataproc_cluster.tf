@@ -20,6 +20,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
       subnetwork = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       tags = ["allow-onprem", "allow-gce-usc1-stage"]
       internal_ip_only = true
+      service_account = "dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
       
       metadata = {
         env = "staging"
@@ -28,7 +29,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
 
     master_config {
       num_instances = 1
-      machine_type  = "e2-micro"
+      machine_type  = "e2-medium"
       disk_config {
         boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 10
@@ -37,7 +38,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
 
     worker_config {
       num_instances    = 2
-      machine_type     = "e2-micro"
+      machine_type     = "e2-medium"
       disk_config {
         boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 10

@@ -11,3 +11,10 @@ resource "google_service_account" "SA_dataproc-test" {
   disabled     = "false"
   display_name = "dataproc-test"
 }
+
+resource "google_service_account" "SA_dataproc" {
+  account_id   = "dataproc"
+  description  = ""
+  disabled     = "false"
+  display_name = "dataproc-test"
+}
