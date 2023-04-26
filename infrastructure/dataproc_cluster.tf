@@ -7,7 +7,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
     app = "dataproc-test"
   }
 
-  csluster_config {
+  cluster_config {
     taging_bucket = "dataproc-test-bucket_cnnx-poc-infra"
 
     software_config{
