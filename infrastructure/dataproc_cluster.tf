@@ -10,19 +10,37 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
   cluster_config {
     staging_bucket = "dataproc-test-bucket"
 
+    software_config{
+      override_properties = {
+        "dataproc:dataproc.allow.zero.workers" = "true"
+      }
+    }
+
+    gce_cluster_config {
+      network = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
+      subnetwork = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
+      tags = ["allow-onprem", "allow-gce-usc1-stage"]
+      internal_ip_only = true
+      
+      metadata = {
+        env = "staging"
+      }
+    }
+
     master_config {
       num_instances = 1
       machine_type  = "e2-micro"
       disk_config {
-        boot_disk_type    = "pd-ssd"
+        boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 10
       }
     }
 
     worker_config {
-      num_instances    = 2
+      num_instances    = 1
       machine_type     = "e2-micro"
       disk_config {
+        boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 10
         num_local_ssds    = 1
       }
