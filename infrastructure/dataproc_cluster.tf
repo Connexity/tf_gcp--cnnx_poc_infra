@@ -32,7 +32,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
       machine_type  = "e2-medium"
       disk_config {
         boot_disk_type    = "pd-standard"
-        boot_disk_size_gb = 10
+        boot_disk_size_gb = 30
       }
     }
 
@@ -41,7 +41,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
       machine_type     = "e2-medium"
       disk_config {
         boot_disk_type    = "pd-standard"
-        boot_disk_size_gb = 10
+        boot_disk_size_gb = 30
         num_local_ssds    = 1
       }
     }
