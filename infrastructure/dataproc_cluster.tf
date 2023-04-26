@@ -20,7 +20,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
       subnetwork = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       tags = ["allow-onprem", "allow-gce-usc1-stage"]
       internal_ip_only = true
-      service_account = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
+      service_account = "dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
       
       metadata = {
         env = "staging"

@@ -95,3 +95,9 @@ resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--dataproc_work
   role = "roles/dataproc.worker"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--compute_networkUser" {
+  member = "serviceAccount:dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/compute.networkUser"
+  project = "${var.gcp_project}"
+}
