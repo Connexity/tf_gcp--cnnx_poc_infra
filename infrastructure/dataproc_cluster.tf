@@ -8,7 +8,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
   }
 
   cluster_config {
-    taging_bucket = "dataproc-test-bucket_cnnx-poc-infra"
+    staging_bucket = "dataproc-test-bucket_cnnx-poc-infra"
 
     software_config{
       override_properties = {
