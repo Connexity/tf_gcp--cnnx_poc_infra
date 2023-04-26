@@ -1,5 +1,5 @@
-resource "google_storage_bucket" "bucket--dataproc-test-bucket" {
-  name          = "dataproc-test-bucket"
+resource "google_storage_bucket" "bucket--dataproc-test-bucket_cnnx-poc-infra" {
+  name          = "dataproc-test-bucket_cnnx-poc-infra"
   location      = "us-central1"
   force_destroy = true
   storage_class = "STANDARD"
@@ -42,6 +42,6 @@ data "google_iam_policy" "dataproc-test-bucket_bucket_iam_policy" {
 }
 
 resource "google_storage_bucket_iam_policy" "dataproc-test-bucket_policy" {
-  bucket = google_storage_bucket.bucket--dataproc-test-bucket.name
+  bucket = google_storage_bucket.bucket--dataproc-test-bucket_cnnx-poc-infra.name
   policy_data = data.google_iam_policy.dataproc-test-bucket_bucket_iam_policy.policy_data
 }

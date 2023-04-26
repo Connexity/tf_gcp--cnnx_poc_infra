@@ -8,7 +8,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
   }
 
   cluster_config {
-    staging_bucket = "dataproc-test-bucket"
+    staging_bucket = "dataproc-test-bucket_cnnx-poc-infra"
 
     software_config{
       override_properties = {
@@ -36,7 +36,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
     }
 
     worker_config {
-      num_instances    = 1
+      num_instances    = 2
       machine_type     = "e2-micro"
       disk_config {
         boot_disk_type    = "pd-standard"
