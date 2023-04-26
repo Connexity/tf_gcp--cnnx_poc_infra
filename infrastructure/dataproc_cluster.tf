@@ -17,7 +17,6 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
     }
 
     gce_cluster_config {
-      network = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
       subnetwork = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
       tags = ["allow-onprem", "allow-gce-usc1-stage"]
       internal_ip_only = true
