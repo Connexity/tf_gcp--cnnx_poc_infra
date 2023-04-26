@@ -90,8 +90,8 @@ resource "google_project_iam_member" "SA_gce_api--cnnx-poc-infra--compute_instan
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--dataproc_worker" {
+resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--dataproc_serviceAgent" {
   member = "serviceAccount:dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/dataproc.worker"
+  role = "roles/dataproc.serviceAgent"
   project = "${var.gcp_project}"
 }
