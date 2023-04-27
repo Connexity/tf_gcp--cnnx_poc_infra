@@ -36,10 +36,6 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
       }
     }
 
-    worker_config {
-      num_instances    = 0
-    }
-
     preemptible_worker_config {
       num_instances = 0
     }
