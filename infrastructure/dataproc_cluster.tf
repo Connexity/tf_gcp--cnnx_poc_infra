@@ -1,6 +1,8 @@
 resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" {
   name     = "dataproc-test-cluster-gce"
   region   = "us-central1"
+  project = "${var.gcp_project}"
+  
   graceful_decommission_timeout = "120s"
   labels = {
     owner = "infrastructure"
@@ -9,12 +11,6 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
 
   cluster_config {
     staging_bucket = "dataproc-test-bucket_cnnx-poc-infra"
-
-    software_config{
-      override_properties = {
-        "dataproc:dataproc.allow.zero.workers" = "true"
-      }
-    }
 
     gce_cluster_config {
       subnetwork = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
@@ -30,6 +26,15 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
     master_config {
       num_instances = 1
       machine_type  = "e2-standard-2"
+      disk_config {
+        boot_disk_type    = "pd-standard"
+        boot_disk_size_gb = 30
+      }
+    }
+
+    worker_config {
+      num_instances    = 2
+      machine_type     = "e2-standard-2"
       disk_config {
         boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 30
