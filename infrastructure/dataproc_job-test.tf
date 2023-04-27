@@ -10,7 +10,7 @@ resource "google_dataproc_job" "dataproc-hadoop-test" {
     args = [
       "wordcount",
       "gs://dataproc-test-bucket_cnnx-poc-infra/Test.txt",
-      "gs://${google_dataproc_cluster.basic.cluster_config[0].bucket}/hadoopjob_output",
+      "gs://${google_dataproc_cluster.dataproc_cluster-dataproc-test-cluster-gce.cluster_config[0].bucket}/hadoopjob_output",
     ]
   }
 }
