@@ -37,12 +37,7 @@ resource "google_dataproc_cluster" "dataproc_cluster-dataproc-test-cluster-gce" 
     }
 
     worker_config {
-      num_instances    = 2
-      machine_type     = "e2-standard-2"
-      disk_config {
-        boot_disk_type    = "pd-standard"
-        boot_disk_size_gb = 30
-      }
+      num_instances    = 0
     }
 
     preemptible_worker_config {
