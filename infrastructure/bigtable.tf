@@ -4,12 +4,9 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   deletion_protection = true
   cluster {
     cluster_id   = "cnnx-poc-infra-c1"
-    storage_type = "SSD"
+    storage_type = "HDD"
     zone = "us-central1-b"
-    autoscaling_config {
-      min_nodes = 1
-      max_nodes = 2
-    }
+    num_nodes    = 1
   }
 
   labels = {
