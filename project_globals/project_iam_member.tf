@@ -150,8 +150,8 @@ resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-inf
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--monitoring_metricWriter" {
+resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--logging_logWriter" {
   member = "serviceAccount:migration-cloud-extension@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.metricWriter"
+  role = "roles/logging.logWriter"
   project = "${var.gcp_project}"
 }
