@@ -101,3 +101,57 @@ resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--compute_netwo
   role = "roles/compute.networkUser"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--cloudmigration_inframanager" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/cloudmigration.inframanager"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--cloudmigration_storageaccess" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/cloudmigration.storageaccess"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--iam_serviceAccountUser" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/iam.serviceAccountUser"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--logging_logWrite" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/logging.logWrite"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.metricWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--monitoring_viewer" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.viewer"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--cloudmigration_storageaccess" {
+  member = "serviceAccount:migration-cloud-extension@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/cloudmigration.storageaccess"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:migration-cloud-extension@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.metricWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:migration-cloud-extension@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.metricWriter"
+  project = "${var.gcp_project}"
+}
