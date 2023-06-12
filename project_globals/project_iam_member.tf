@@ -120,9 +120,9 @@ resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--iam_
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--logging_logWrite" {
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--logging_logWriter" {
   member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/logging.logWrite"
+  role = "roles/logging.logWriter"
   project = "${var.gcp_project}"
 }
 
