@@ -138,6 +138,12 @@ resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--moni
   project = "${var.gcp_project}"
 }
 
+resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--iam_serviceAccountTokenCreator" {
+  member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/iam.serviceAccountTokenCreator"
+  project = "${var.gcp_project}"
+}
+
 resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-infra--cloudmigration_storageaccess" {
   member = "serviceAccount:migration-cloud-extension@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/cloudmigration.storageaccess"
