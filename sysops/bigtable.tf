@@ -4,9 +4,15 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   deletion_protection = true
   cluster {
     cluster_id   = "cnnx-poc-infra-c1"
-    num_nodes    = 1
     storage_type = "SSD"
     zone = "us-central1-b"
+    num_nodes = 1
+  }
+  cluster {
+    cluster_id   = "cnnx-poc-infra-c2"
+    storage_type = "SSD"
+    zone = "us-central1-a"
+    num_nodes = 1
   }
 
   labels = {
