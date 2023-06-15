@@ -10,8 +10,8 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   }
 
   labels = {
-    owner = "platform"
-    app = "site-offer-service"
+    owner = "sysops"
+    app = "testing"
   }
 
   lifecycle {
