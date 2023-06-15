@@ -4,9 +4,15 @@ resource "google_bigtable_instance" "bigtable-cnnx-poc-infra-instance" {
   deletion_protection = true
   cluster {
     cluster_id   = "cnnx-poc-infra-c1"
-    num_nodes    = 1
     storage_type = "SSD"
     zone = "us-central1-b"
+    num_nodes = 1
+  }
+  cluster {
+    cluster_id   = "cnnx-poc-infra-c2"
+    storage_type = "SSD"
+    zone = "us-central1-a"
+    num_nodes = 1
   }
 
   labels = {
@@ -36,13 +42,19 @@ resource "google_bigtable_gc_policy" "table_cnnx-poc-infra-instance_order-recove
   table         = google_bigtable_table.table_cnnx-poc-infra-instance_order-recovery-test.name
   column_family = "o"
 
-  mode = "INTERSECTION"
-  max_age {
-    duration = "72h"
+  gc_rules = <<EOF
+  {
+    "mode": "INTERSECTION",
+    "rules": [
+      {
+        "max_age": "72h"
+      },
+      {
+        "max_version": 1
+      }
+    ]
   }
-  max_version {
-    number = 1
-  }
+  EOF
 }
 
 #  mode = "INTERSECTION"
