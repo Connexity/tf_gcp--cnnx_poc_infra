@@ -44,7 +44,7 @@ resource "google_bigtable_gc_policy" "table_cnnx-poc-infra-instance_order-recove
 
   gc_rules = <<EOF
   {
-    "mode": "INTERSECTION",
+    "mode": "UNION",
     "rules": [
       {
         "max_age": "72h"
