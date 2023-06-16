@@ -42,12 +42,9 @@ resource "google_bigtable_gc_policy" "table_cnnx-poc-infra-instance_order-recove
   table         = google_bigtable_table.table_cnnx-poc-infra-instance_order-recovery-test.name
   column_family = "o"
 
-  mode = "INTERSECTION"
+  mode = "UNION"
   max_age {
-    duration = "72h"
-  }
-  max_version {
-    number = 1
+    duration = "3d"
   }
 }
 
