@@ -42,10 +42,16 @@ resource "google_bigtable_gc_policy" "table_cnnx-poc-infra-instance_order-recove
   table         = google_bigtable_table.table_cnnx-poc-infra-instance_order-recovery-test.name
   column_family = "o"
 
-  mode = "UNION"
-  max_age {
-    duration = "72h"
+  gc_rules = <<EOF
+  {
+    "mode": "INTERSECTION",
+    "rules": [
+      {
+        "max_age": "72h"
+      }
+    ]
   }
+  EOF
 }
 
 #  mode = "INTERSECTION"
