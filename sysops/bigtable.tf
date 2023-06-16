@@ -44,7 +44,7 @@ resource "google_bigtable_gc_policy" "table_cnnx-poc-infra-instance_order-recove
 
   mode = "UNION"
   max_age {
-    duration = "3d"
+    duration = "72h"
   }
 }
 
