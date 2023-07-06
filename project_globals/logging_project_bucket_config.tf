@@ -1,4 +1,4 @@
-resource "google_logging_project_bucket_config" "cnnx-prod-publisher--google_logging_project_bucket_config" {
+resource "google_logging_project_bucket_config" "cnnx-poc-infra--google_logging_project_bucket_config" {
     project    = "${var.gcp_project}"
     location  = "global"
     enable_analytics = true
