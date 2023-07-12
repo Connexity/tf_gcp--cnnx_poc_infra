@@ -27,6 +27,7 @@ resource "google_compute_instance" "Instance_solr-us-tes061" {
         owner = "platform"
         app = "solr-us"
       }
+    }
     auto_delete = "true"
     device_name = "solr-us-test061"
     mode        = "READ_WRITE"
