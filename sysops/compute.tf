@@ -31,7 +31,6 @@ resource "google_compute_instance" "Instance_solr-us-tes061" {
     auto_delete = "true"
     device_name = "solr-us-test061"
     mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-prod-search/zones/us-central1-a/disks/solr-us-test061"
   }
 
   can_ip_forward      = "false"
@@ -64,6 +63,11 @@ resource "google_compute_instance" "Instance_solr-us-tes061" {
 
   reservation_affinity {
     type = "ANY_RESERVATION"
+  }
+
+  service_account {
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
   scheduling {
@@ -117,7 +121,6 @@ resource "google_compute_instance" "Instance_solr-gb-test005" {
     auto_delete = "true"
     device_name = "solr-gb-test005"
     mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/us-central1-a/disks/solr-gb-test005"
   }
 
   can_ip_forward      = "false"
@@ -150,6 +153,11 @@ resource "google_compute_instance" "Instance_solr-gb-test005" {
 
   reservation_affinity {
     type = "ANY_RESERVATION"
+  }
+
+  service_account {
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
   scheduling {
