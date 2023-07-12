@@ -94,7 +94,6 @@ resource "google_compute_disk" "persistent-disk_solr-gb-test005-1" {
   name  = "solr-gb-test005-1"
   type  = "pd-ssd"
   zone  = "us-central1-a"
-  size  = 200
   project = "${var.gcp_project}"
   labels = {
     owner = "platform"
@@ -111,7 +110,6 @@ resource "google_compute_instance" "Instance_solr-gb-test005" {
 
   boot_disk {
     initialize_params {
-      size = 50
       image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20220905"
       labels = {
         owner = "platform"
