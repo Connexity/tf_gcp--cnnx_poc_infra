@@ -1,5 +1,5 @@
 resource "google_compute_disk" "persistent-disk_solr-us-test-disks" {
-  count = 2
+  count = 15
 
   name  = "${format("solr-us-test%03s-1", count.index+1)}"
   type  = "pd-ssd"
