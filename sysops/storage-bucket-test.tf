@@ -11,7 +11,7 @@ resource "google_storage_bucket" "bucket--test_cnnx-stage-inventory" {
 
   lifecycle_rule {
     condition {
-      age = 10
+      age = 1
       matches_suffix = [".gz", ".pb", ".jar"]
       with_state = "ANY"
     }
