@@ -9,10 +9,11 @@ resource "google_notebooks_instance" "vertex-ai-workbench--test-notebook-instanc
     image_family = "tf-latest-cpu"
   }
 
+  instance_owners = [ "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"]
   service_account = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
 
   boot_disk_type = "PD_SSD"
-  boot_disk_size_gb = 10
+  boot_disk_size_gb = 100
 
   no_public_ip = true
   no_proxy_access = true
