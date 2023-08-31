@@ -2,6 +2,7 @@ resource "google_notebooks_instance" "vertex-ai-workbench--test-notebook-instanc
   name = "test-notebook-instnace"
   location = "us-central1-a"
   machine_type = "n1-standard-1"
+  project = "${var.gcp_project}"
 
   vm_image {
     project      = "deeplearning-platform-release"
