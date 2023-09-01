@@ -9,7 +9,7 @@ resource "google_notebooks_instance" "vertex-ai-workbench--test-notebook-instanc
     image_family = "tf-latest-cpu"
   }
 
-  instance_owners = [ "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"]
+  instance_owners = [ "kevin.donnelly@taboola.com"]
   service_account = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
 
   boot_disk_type = "PD_SSD"
@@ -19,7 +19,7 @@ resource "google_notebooks_instance" "vertex-ai-workbench--test-notebook-instanc
   no_proxy_access = true
 
   network = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc" 
-  subnet = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
+  subnet = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-infra-networking-core-vpc-usc1g-prv-srvc-connect-1"
 
   labels = {
     owner = "sysops"
