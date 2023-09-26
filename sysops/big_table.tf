@@ -4,7 +4,7 @@ resource "google_bigtable_instance" "bigtable-sysops-bt" {
   deletion_protection = true
   cluster {
     cluster_id   = "sysops-c1"
-    num_nodes    = 1
+    num_nodes    = 2
     storage_type = "SSD"
     zone = "us-central1-b"
   }
