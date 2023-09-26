@@ -11,7 +11,7 @@ resource "google_bigtable_instance" "bigtable-sysops-bt" {
 
   labels = {
     owner = "sysops"
-    app = "offer-id-service-v2"
+    app = "test-bt"
   }
 
   lifecycle { 
