@@ -69,3 +69,64 @@ resource "google_compute_instance" "Instance_os-management-test-instances" {
   zone = "us-central1-a"
 }
 
+resource "google_compute_instance" "Instance_os-management-test003" {
+  boot_disk {
+    source = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/europe-west1-b/disks/os-management-test003"
+    auto_delete = "true"
+    device_name = "os-management-test003"
+    mode        = "READ_WRITE"
+  }
+
+  can_ip_forward      = "false"
+  deletion_protection = "false"
+  enable_display      = "false"
+
+  labels = {
+    app   = "osmanagementtest"
+    owner = "sysops"
+  }
+
+  machine_type = "e2-micro"
+
+  metadata = {
+    env            = "stage"
+    startup-script = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
+  }
+
+  name = "os-management-test003"
+
+  network_interface {
+    network            = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
+    queue_count        = "0"
+    stack_type         = "IPV4_ONLY"
+    subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/europe-west1/subnetworks/cnnx-euw1-stage-gce-1"
+    subnetwork_project = "cnnx-infra-networking"
+  }
+
+  project = "${var.gcp_project}"
+
+  reservation_affinity {
+    type = "ANY_RESERVATION"
+  }
+
+  service_account {
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
+
+  scheduling {
+    automatic_restart   = "true"
+    min_node_cpus       = "0"
+    on_host_maintenance = "MIGRATE"
+    preemptible         = "false"
+  }
+
+  shielded_instance_config {
+    enable_integrity_monitoring = "true"
+    enable_secure_boot          = "true"
+    enable_vtpm                 = "true"
+  }
+
+  tags = ["allow-onprem", "allow-gce-lb", "allow-gce-euw1-stage"]
+  zone = "europe-west1-b"
+}
