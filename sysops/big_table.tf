@@ -14,9 +14,6 @@ resource "google_bigtable_instance" "bigtable-sysops-bt" {
     app = "test-bt"
   }
 
-  lifecycle { 
-    prevent_destroy = false 
-  }
 }
 
 resource "google_bigtable_table" "table_bigtable-sysops-bt_sysops-test-table-1" {
@@ -26,9 +23,6 @@ resource "google_bigtable_table" "table_bigtable-sysops-bt_sysops-test-table-1" 
     family = "o"
   }
 
-  lifecycle { 
-    prevent_destroy = true 
-  }
 }
 
 
