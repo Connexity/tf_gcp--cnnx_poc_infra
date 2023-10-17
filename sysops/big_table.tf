@@ -55,9 +55,6 @@ resource "google_bigtable_table" "table_bigtable-sysops-bt_sysops-test-table-2" 
     family = "o"
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 
