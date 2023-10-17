@@ -32,7 +32,7 @@ resource "google_bigtable_table" "table_bigtable-sysops-bt_sysops-test-table-1" 
 }
 
 
-resource "google_bigtable_gc_policy" "table_table_bigtable-inventory-instance_offer-id-mapping_policy" {
+resource "google_bigtable_gc_policy" "table_table_bigtable-inventory-instance_sysops-test-table-1_policy" {
   instance_name = google_bigtable_instance.bigtable-sysops-bt.name
   table         = google_bigtable_table.table_bigtable-sysops-bt_sysops-test-table-1.name
   column_family = "o"
@@ -61,7 +61,7 @@ resource "google_bigtable_table" "table_bigtable-sysops-bt_sysops-test-table-2" 
 }
 
 
-resource "google_bigtable_gc_policy" "table_table_bigtable-inventory-instance_offer-id-mapping_policy" {
+resource "google_bigtable_gc_policy" "table_table_bigtable-inventory-instance_sysops-test-table-2_policy" {
   instance_name = google_bigtable_instance.bigtable-sysops-bt.name
   table         = google_bigtable_table.table_bigtable-sysops-bt_sysops-test-table-2.name
   column_family = "o"
