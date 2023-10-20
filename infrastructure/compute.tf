@@ -1,5 +1,5 @@
 resource "google_compute_instance" "Instance_os-management-test-instances" {
-  count = 2
+  count = 3
 
   boot_disk {
     initialize_params {
@@ -28,7 +28,7 @@ resource "google_compute_instance" "Instance_os-management-test-instances" {
 
   metadata = {
     env            = "stage"
-    startup-script = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
+    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
   }
 
   name = "${format("os-management-test%03s", count.index+1)}"
