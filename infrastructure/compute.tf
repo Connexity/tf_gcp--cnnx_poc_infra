@@ -1,10 +1,10 @@
 resource "google_compute_instance" "Instance_os-management-test-instances" {
-  count = 2
+  count = 1
 
   boot_disk {
     initialize_params {
       size = 50
-      image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20230715"
+      image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20220905"
       labels = {
         owner = "sysops"
         app = "osmanagementtest"
@@ -28,7 +28,6 @@ resource "google_compute_instance" "Instance_os-management-test-instances" {
 
   metadata = {
     env            = "stage"
-    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
   }
 
   name = "${format("os-management-test%03s", count.index+1)}"
