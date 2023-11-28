@@ -161,3 +161,15 @@ resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-inf
   role = "roles/logging.logWriter"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--compute_osLogin" {
+  member = "serviceAccount:vuln-patching-notifications@cnnx-infra-admin.iam.gserviceaccount.com"
+  role = "roles/compute.osLogin"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--osconfig_vulnerabilityReportViewer" {
+  member = "serviceAccount:vuln-patching-notifications@cnnx-infra-admin.iam.gserviceaccount.com"
+  role = "roles/osconfig.vulnerabilityReportViewer"
+  project = "${var.gcp_project}"
+}
