@@ -173,3 +173,33 @@ resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-i
   role = "roles/osconfig.vulnerabilityReportViewer"
   project = "${var.gcp_project}"
 }
+
+resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--compute_networkUser" {
+  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/compute.networkUser"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--dataproc_worker" {
+  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/dataproc.worker"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--logging_logWriter" {
+  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/logging.logWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.metricWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--monitoring_viewer" {
+  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.viewer"
+  project = "${var.gcp_project}"
+}
