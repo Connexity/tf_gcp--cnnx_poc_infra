@@ -25,3 +25,11 @@ resource "google_service_account" "SA_migration-cloud-extension" {
   disabled     = "false"
   display_name = "migration-cloud-extension"
 }
+
+resource "google_service_account" "SA_fasttrack-hdp" {
+  account_id   = "fasttrack-hdp"
+  description  = "fasttrack-hdp SA"
+  disabled     = "false"
+  display_name = "fasttrack-hdp"
+}
+
