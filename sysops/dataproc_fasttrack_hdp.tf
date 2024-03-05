@@ -42,7 +42,7 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
       tags = ["allow-gce-usc1-stage", "allow-onprem"]
       network    = google_compute_network.dataproc_network.name
       subnetwork = "projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
-      service_account = fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com
+      service_account = "fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
       internal_ip_only = true
       shielded_instance_config{
         enable_secure_boot          = true
