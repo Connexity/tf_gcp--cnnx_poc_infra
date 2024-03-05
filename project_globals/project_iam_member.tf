@@ -205,13 +205,13 @@ resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--monitori
 }
 
 resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infra--compute_networkUser" {
-  member = "serviceAccount:service-793053897698@dataproc-accounts.iam.gserviceaccount.com"
+  member = "serviceAccount:service-832312746254@dataproc-accounts.iam.gserviceaccount.com"
   role = "roles/compute.networkUser"
   project = "${var.gcp_project}"
 }
 
 resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:service-793053897698@dataproc-accounts.iam.gserviceaccount.com"
+  member = "serviceAccount:service-832312746254@dataproc-accounts.iam.gserviceaccount.com"
   role = "roles/dataproc.worker"
   project = "${var.gcp_project}"
 }
