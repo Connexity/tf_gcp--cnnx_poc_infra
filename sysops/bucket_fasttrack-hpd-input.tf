@@ -26,7 +26,7 @@ data "google_iam_policy" "fasttrack-hpd-input_cnnx-poc-infra_policy" {
   }
   binding {
     role = "roles/storage.legacyObjectReader"
-    members = [  projectViewer:${var.gcp_project} ]
+    members = [ "projectViewer:${var.gcp_project}" ]
   }
   binding {
     role = "roles/storage.legacyBucketOwner"
