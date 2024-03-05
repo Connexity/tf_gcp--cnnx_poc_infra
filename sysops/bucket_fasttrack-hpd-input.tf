@@ -14,11 +14,11 @@ resource "google_storage_bucket" "fasttrack-hpd-input_cnnx-poc-infra" {
 data "google_iam_policy" "fasttrack-hpd-input_cnnx-poc-infra_policy" {
   binding {
     role = "roles/storage.objectAdmin"
-    members = [ "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com@cnnx-poc-infra.iam.gserviceaccount.com" ]
+    members = [ "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com" ]
   }
   binding {
     role = "roles/storage.legacyBucketReader"
-    members = [ "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com@cnnx-poc-infra.iam.gserviceaccount.com", "projectViewer:${var.gcp_project}" ]
+    members = [ "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com", "projectViewer:${var.gcp_project}" ]
   }
   binding {
     role = "roles/storage.legacyObjectOwner"
@@ -38,4 +38,3 @@ resource "google_storage_bucket_iam_policy" "fasttrack-hpd-input_cnnx-poc-infra_
   bucket = google_storage_bucket.fasttrack-hpd-input_cnnx-poc-infra.name
   policy_data = data.google_iam_policy.fasttrack-hpd-input_cnnx-poc-infra_policy.policy_data
 }
-
