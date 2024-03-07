@@ -49,5 +49,10 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
         enable_integrity_monitoring = true
       }
     }
+
+  #enable Component Gateway
+  endpoint_config {
+    enable_http_port_access = "true"
+    }
   }
 }
