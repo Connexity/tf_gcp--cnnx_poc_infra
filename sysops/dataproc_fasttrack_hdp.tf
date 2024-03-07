@@ -26,6 +26,10 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
         boot_disk_type    = "pd-standard"
         boot_disk_size_gb = 500
       }
+
+    endpoint_config {
+      enable_http_port_access = "true"
+      }
     }
 
     preemptible_worker_config {
