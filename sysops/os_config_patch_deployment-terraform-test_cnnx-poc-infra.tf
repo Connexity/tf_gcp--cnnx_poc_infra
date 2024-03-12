@@ -1,5 +1,5 @@
-resource "google_os_config_patch_deployment" "patch_deployment_terraform-test_cnnx-poc-infra" {
-  patch_deployment_id = "terraform-test_cnnx-poc-infra"
+resource "google_os_config_patch_deployment" "patch_deployment-terraform-test_cnnx-poc-infra" {
+  patch_deployment_id = "terraform-test-cnnx-poc-infra"
 
   instance_filter {
     instance_name_prefixes = [ "os-manage" ]
