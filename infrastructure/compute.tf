@@ -1,5 +1,5 @@
 resource "google_compute_instance" "Instance_os-management-test-instances" {
-  count = 1
+  count = 3
 
   boot_disk {
     initialize_params {
