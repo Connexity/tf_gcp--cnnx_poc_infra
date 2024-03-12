@@ -2,7 +2,7 @@ resource "google_os_config_patch_deployment" "patch_deployment_terraform-test_cn
   patch_deployment_id = "terraform-test_cnnx-poc-infra"
 
   instance_filter {
-    instance_name_prefixes = "os-manage"
+    instance_name_prefixes = [ "os-manage" ]
     all = false
     zones = ["us-central1-a","us-central1-b","us-central1-c","us-central1-f"]
     group_labels {
