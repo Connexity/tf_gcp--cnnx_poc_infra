@@ -32,10 +32,3 @@ resource "google_service_account" "SA_fasttrack-hdp" {
   disabled     = "false"
   display_name = "fasttrack-hdp"
 }
-
-resource "google_service_account" "SA_vertex-workbench" {
-  account_id   = "vertex-workbench"
-  description  = "vertex-workbench SA"
-  disabled     = "false"
-  display_name = "vertex-workbench"
-}

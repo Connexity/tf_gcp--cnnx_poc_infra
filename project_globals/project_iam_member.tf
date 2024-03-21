@@ -215,15 +215,3 @@ resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infr
   role = "roles/dataproc.worker"
   project = "${var.gcp_project}"
 }
-
-resource "google_project_iam_member" "SA_vertex-workbench--cnnx-poc-infra--notebooks_admin" {
-  member = "serviceAccount:vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/notebooks.admin"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_vertex-workbench--cnnx-poc-infra--aiplatform_serviceAgent" {
-  member = "serviceAccount:vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/aiplatform.serviceAgent"
-  project = "${var.gcp_project}"
-}
