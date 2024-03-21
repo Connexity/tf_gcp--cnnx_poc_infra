@@ -1,6 +1,6 @@
 resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearraform_test" {
   name = "vertex-instance-tearraform-test"
-  location = "us-central1"
+  location = "us-central1-a"
   gce_setup {
     machine_type = "n1-standard-1"
     shielded_instance_config {
