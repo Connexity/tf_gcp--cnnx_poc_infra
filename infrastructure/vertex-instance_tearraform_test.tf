@@ -20,10 +20,10 @@ resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearra
       network = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
       subnet = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
     }
-    labels = {
-      app = "de-v2-dashboard" 
-      owner = "platform"
-    }
-    instance_owners = ["vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"]
   }
+  labels = {
+    app = "de-v2-dashboard" 
+    owner = "platform"
+  }
+  instance_owners = ["vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"]
 }
