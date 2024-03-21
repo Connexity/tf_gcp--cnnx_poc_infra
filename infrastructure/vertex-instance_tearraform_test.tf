@@ -1,5 +1,5 @@
 resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearraform_test" {
-  name = "vertex-instance_tearraform_test"
+  name = "projects/cnnx-poc-infra/locations/us-central1-f/instances/vertex-instance_tearraform_test"
   location = "us-central1-f"
   gce_setup {
     machine_type = "n1-standard-1"
