@@ -162,12 +162,6 @@ resource "google_project_iam_member" "SA_migration-cloud-extension--cnnx-poc-inf
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--compute_osLogin" {
-  member = "serviceAccount:vuln-patching-notifications@cnnx-infra-admin.iam.gserviceaccount.com"
-  role = "roles/compute.osLogin"
-  project = "${var.gcp_project}"
-}
-
 resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--osconfig_vulnerabilityReportViewer" {
   member = "serviceAccount:vuln-patching-notifications@cnnx-infra-admin.iam.gserviceaccount.com"
   role = "roles/osconfig.vulnerabilityReportViewer"
@@ -213,5 +207,11 @@ resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infr
 resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infra--monitoring_viewer" {
   member = "serviceAccount:service-832312746254@dataproc-accounts.iam.gserviceaccount.com"
   role = "roles/dataproc.worker"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "GRP_cnnx-serviceaccount-gce-oslogin--connexity--compute_osLogin" {
+  member = "group:cnnx-serviceaccount-gce-oslogin@skimlinks.co.uk"
+  role = "roles/compute.osLogin"
   project = "${var.gcp_project}"
 }
