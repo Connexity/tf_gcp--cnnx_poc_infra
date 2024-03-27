@@ -209,9 +209,3 @@ resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infr
   role = "roles/dataproc.worker"
   project = "${var.gcp_project}"
 }
-
-resource "google_project_iam_member" "GRP_cnnx-serviceaccount-gce-oslogin--connexity--compute_osLogin" {
-  member = "group:cnnx-serviceaccount-gce-oslogin@skimlinks.co.uk"
-  role = "roles/compute.osLogin"
-  project = "${var.gcp_project}"
-}
