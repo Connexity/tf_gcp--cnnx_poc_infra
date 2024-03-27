@@ -47,3 +47,11 @@ resource "google_project_iam_member" "SA_vertex-workbench--cnnx-poc-infra--aipla
   project = "${var.gcp_project}"
 }
 
+resource "google_service_account_iam_binding" "SA_vertex-workbench--iam_serviceAccountUser--iam_binding" {
+  service_account_id = google_service_account.SA_vertex-workbench.name
+  role               = "roles/iam.serviceAccountUser"
+
+  members = [
+    "serviceAccount:vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"
+  ]
+}
