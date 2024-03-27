@@ -1,13 +1,8 @@
 resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearraform_test" {
-  name = "projects/cnnx-poc-infra/locations/us-central1/runtimes/vertex-instance-tearraform-test"
-  location = "us-central1-a"
+  name = "vertex-instance-tearraform-test"
+  location = "us-central1-f"
   gce_setup {
     machine_type = "n1-standard-1"
-    shielded_instance_config {
-      enable_secure_boot = true
-      enable_vtpm = true
-      enable_integrity_monitoring = true
-    }
     disable_public_ip = true
     service_accounts {
       email = "vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"
