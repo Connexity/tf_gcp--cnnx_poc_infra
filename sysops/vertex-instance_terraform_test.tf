@@ -1,5 +1,5 @@
 resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearraform_test" {
-  name = "vertex-instance-tearraform-test"
+  name = "projects/cnnx-poc-infra/locations/us-central1/runtimes/vertex-instance-tearraform-test"
   location = "us-central1-a"
   gce_setup {
     machine_type = "n1-standard-1"
@@ -25,7 +25,6 @@ resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearra
     app = "de-v2-dashboard" 
     owner = "platform"
   }
-  instance_owners = ["vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"]
 }
 
 resource "google_service_account" "SA_vertex-workbench" {
