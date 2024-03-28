@@ -8,7 +8,7 @@ resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearra
       email = "vertex-workbench@cnnx-poc-infra.iam.gserviceaccount.com"
     }
     boot_disk {
-      disk_size_gb = 100
+      disk_size_gb = 150
       disk_type = "PD_STANDARD"
     }
     network_interfaces {
