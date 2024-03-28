@@ -15,6 +15,11 @@ resource "google_workbench_instance" "vertex_ai_workbench_vertex-instance_tearra
       network = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
       subnet = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-vertexaiworkbench-1"
     }
+    shielded_instance_config {
+      enable_secure_boot = true
+      enable_vtpm = true
+      enable_integrity_monitoring = true
+    }
   }
   labels = {
     app = "de-v2-dashboard" 
