@@ -1,6 +1,6 @@
 include:
-  - remote: http://gitlab.shopzilla.com/terraform/pipeline-templates/-/raw/master/latest_image_template.gitlab-ci.yml
-
+  - remote: http://gitlab.shopzilla.com/terraform/pipeline-templates/-/raw/1.5_v1.8.0/template.gitlab-ci.yml
+  
 stages:
   - init
   - validate
