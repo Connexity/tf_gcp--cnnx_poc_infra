@@ -1,5 +1,5 @@
 include:
-  - remote: http://gitlab.shopzilla.com/terraform/pipeline-templates/-/raw/master/template.gitlab-ci.yml
+  - remote: http://gitlab.shopzilla.com/terraform/pipeline-templates/-/raw/master/1.5_testing_template.gitlab-ci.yml
 
 stages:
   - init
