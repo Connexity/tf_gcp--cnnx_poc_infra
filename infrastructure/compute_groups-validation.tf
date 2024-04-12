@@ -33,3 +33,17 @@ resource "google_compute_instance" "groups-validation" {
   
 }
 
+resource "google_compute_resource_policy" "quarterly_schedule" {
+  name   = "quarterly_vm_start-stop"
+  region = "us-central1"
+  description = "Start and stop instances"
+  instance_schedule_policy {
+    vm_start_schedule {
+      schedule = "0 0 1 */3 *"
+    }
+    vm_stop_schedule {
+      schedule = "0 30 1 */3 *"
+    }
+    time_zone = "US/Central"
+  }
+}
