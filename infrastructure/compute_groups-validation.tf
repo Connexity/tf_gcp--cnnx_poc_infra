@@ -39,10 +39,10 @@ resource "google_compute_resource_policy" "quarterly_schedule" {
   description = "Start and stop instances"
   instance_schedule_policy {
     vm_start_schedule {
-      schedule = "0 0 1 */3 *"
+      schedule = "0 0 1 1,4,7,10 *"
     }
     vm_stop_schedule {
-      schedule = "0 30 1 */3 *"
+      schedule = "0 30 1 1,4,7,10 *"
     }
     time_zone = "US/Central"
   }
