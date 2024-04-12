@@ -30,7 +30,10 @@ resource "google_compute_instance" "groups-validation" {
     email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
-  
+
+  resource_policies = [
+    google_compute_resource_policy.quarterly_schedule.id
+  ]  
 }
 
 resource "google_compute_resource_policy" "quarterly_schedule" {
