@@ -3,7 +3,7 @@ resource "google_compute_instance" "groupsreview-test" {
   machine_type = "e2-micro"
   zone         = "us-central1-a"
   tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
-
+  deletion_protection = "false"
   boot_disk {
     initialize_params {
       size        = "10"
