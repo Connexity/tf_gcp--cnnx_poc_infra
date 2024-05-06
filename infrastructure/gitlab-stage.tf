@@ -32,7 +32,7 @@ resource "google_compute_instance" "instance_gitlab-stage" {
 
   metadata = {
     env                = "staging"
-    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
+    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-bootstrap-script/-/raw/master/awxprovision.py"
   }
 
   network_interface {
