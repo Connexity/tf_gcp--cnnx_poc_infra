@@ -24,19 +24,4 @@ resource "google_os_config_patch_deployment" "patch_deployment-terraform-test_cn
       fixed = 1
     }
   }
-
-  recurring_schedule {
-    time_zone {
-      id = "America/Los_Angeles"
-    }
-    time_of_day {
-      hours = 10
-    }
-    monthly {
-      week_day_of_month {
-        week_ordinal = 1
-        day_of_week = "MONDAY"
-      }
-    }
-  }
 }
