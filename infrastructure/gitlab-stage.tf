@@ -17,7 +17,7 @@ resource "google_compute_instance" "instance_gitlab-stage" {
 
   boot_disk {
     initialize_params {
-      size        = "100"
+      size        = "250"
       image      = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20240126"
     }
     auto_delete = "true"
@@ -32,7 +32,6 @@ resource "google_compute_instance" "instance_gitlab-stage" {
 
   metadata = {
     env                = "staging"
-    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-bootstrap-script/-/raw/master/awxprovision.py"
   }
 
   network_interface {
