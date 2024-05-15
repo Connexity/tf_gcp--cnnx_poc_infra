@@ -1,5 +1,5 @@
-resource "google_dataproc_cluster" "fasttrack-hdp" {
-  name     = "fasttrack-hdp"
+resource "google_dataproc_cluster" "test-fasttrack-hdp" {
+  name     = "test-fasttrack-hdp"
   region   = "us-central1"
   graceful_decommission_timeout = "120s"
   labels = {
