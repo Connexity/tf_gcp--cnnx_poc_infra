@@ -1,5 +1,5 @@
-resource "google_dataproc_cluster" "test-fasttrack-hdp" {
-  name     = "test-fasttrack-hdp"
+resource "google_dataproc_cluster" "fasttrack-hdp" {
+  name     = "test-fasttrack-hdp-2"
   region   = "us-central1"
   graceful_decommission_timeout = "120s"
   labels = {
@@ -35,6 +35,9 @@ resource "google_dataproc_cluster" "test-fasttrack-hdp" {
     # Override or set some custom properties
     software_config {
       image_version = "1.3.95-debian10"
+      override_properties = {
+        "hadoop-log4j:log4j.properties" = "gs://fasttrack-hpd-staging_cnnx-poc-infra/dataproc-log4j-config/log4j.properties"
+      }
     }
 
     gce_cluster_config {
