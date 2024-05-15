@@ -11,20 +11,20 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
     staging_bucket = "fasttrack-hpd-staging_cnnx-poc-infra"
 
     master_config {
-      num_instances = 1
+      num_instances = 1 
       machine_type  = "n2-standard-8"
       disk_config {
         boot_disk_type    = "pd-standard"
-        boot_disk_size_gb = 500
+        boot_disk_size_gb = 100
       }
     }
 
     worker_config {
-      num_instances    = 1
+      num_instances    = 2
       machine_type     = "n2-standard-8"
       disk_config {
         boot_disk_type    = "pd-standard"
-        boot_disk_size_gb = 500
+        boot_disk_size_gb = 100
       }
     }
 
