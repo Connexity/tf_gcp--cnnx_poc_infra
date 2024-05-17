@@ -1,5 +1,5 @@
-resource "google_storage_bucket" "fasttrack-hpd-staging_cnnx-poc-infra" {
-  name          = "fasttrack-hpd-staging_cnnx-poc-infra"
+resource "google_storage_bucket" "fasttrack-hpd-staging-cnnx-poc-infra" {
+  name          = "fasttrack-hpd-staging-cnnx-poc-infra"
   location      = "us-central1"
   force_destroy = true
   storage_class = "STANDARD"
@@ -11,7 +11,7 @@ resource "google_storage_bucket" "fasttrack-hpd-staging_cnnx-poc-infra" {
   }
 }
 
-data "google_iam_policy" "fasttrack-hpd-staging_cnnx-poc-infra_policy" {
+data "google_iam_policy" "fasttrack-hpd-staging-cnnx-poc-infra_policy" {
   binding {
     role = "roles/storage.objectAdmin"
     members = [ "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com" ]
@@ -34,8 +34,8 @@ data "google_iam_policy" "fasttrack-hpd-staging_cnnx-poc-infra_policy" {
   }
 }
 
-resource "google_storage_bucket_iam_policy" "fasttrack-hpd-staging_cnnx-poc-infra_iam_policy" {
-  bucket = google_storage_bucket.fasttrack-hpd-staging_cnnx-poc-infra.name
-  policy_data = data.google_iam_policy.fasttrack-hpd-staging_cnnx-poc-infra_policy.policy_data
+resource "google_storage_bucket_iam_policy" "fasttrack-hpd-staging-cnnx-poc-infra_iam_policy" {
+  bucket = google_storage_bucket.fasttrack-hpd-staging-cnnx-poc-infra.name
+  policy_data = data.google_iam_policy.fasttrack-hpd-staging-cnnx-poc-infra_policy.policy_data
 }
 
