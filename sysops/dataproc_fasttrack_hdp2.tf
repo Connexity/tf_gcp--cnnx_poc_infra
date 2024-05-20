@@ -36,7 +36,10 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
     software_config {
       image_version = "1.3.95-debian10"
       override_properties = {
-        "hadoop-log4j:log4j.properties" = "gs://hadoop-logging_cnnx-poc-infra/log4j.properties"
+        "hadoop-log4j:log4j.properties" = "gs://hadoop-logging_cnnx-poc-infra/hadoop-log4j.properties",
+        "pig:pig.properties" = "gs://hadoop-logging_cnnx-poc-infra/pig-log4j.properties",
+        "yarn-env:yarn-env.sh" = "gs://hadoop-logging_cnnx-poc-infra/yarn-env.sh",
+        "mapred-env:mapred-env.sh" = "gs://hadoop-logging_cnnx-poc-infra/mapred-env.sh"
       }
     }
 
