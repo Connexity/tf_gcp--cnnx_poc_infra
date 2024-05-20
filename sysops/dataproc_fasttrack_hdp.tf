@@ -8,7 +8,7 @@ resource "google_dataproc_cluster" "test-fasttrack-hdp" {
   }
 
   cluster_config {
-    staging_bucket = "fasttrack-hpd-staging_cnnx-poc-infra"
+    staging_bucket = "fasttrack-hpd-staging-cnnx-poc-infra"
 
     master_config {
       num_instances = 1
