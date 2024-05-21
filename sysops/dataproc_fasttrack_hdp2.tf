@@ -42,7 +42,7 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
         "hadoop-log4j:log4j.logger.org.apache.hadoop.yarn" = "WARN",
         "hadoop-log4j:mapred.audit.logger" = "WARN",
         "hadoop-log4j:hdfs.audit.logger" = "WARN",
-        "hadoop-log4j:log4j.logger.org.apache.spar" = "WARN"
+        "hadoop-log4j:log4j.logger.org.apache.spar" = "WARN",
         "pig:debug" = "ERROR"
       }
     }
