@@ -60,9 +60,14 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
       }
     }
 
-  #enable Component Gateway
-  endpoint_config {
-    enable_http_port_access = "true"
+    #enable Component Gateway
+    endpoint_config {
+      enable_http_port_access = "true"
+    }
+
+    initialization_action {
+      script      = "gs://fasttrack-hpd-staging-cnnx-poc-infra/fasttrack-dataproc-initialization-actions/fasttrack-dataproc-cluster-init-script.sh"
+      timeout_sec = 500
     }
   }
 }
