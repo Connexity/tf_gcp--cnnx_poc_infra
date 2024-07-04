@@ -31,9 +31,11 @@ resource "google_compute_instance" "groups-validation" {
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 
-  resource_policies = [
-    google_compute_resource_policy.quarterly_schedule.id
-  ]  
+### Deactivated 4.07.2024 ELI
+#  resource_policies = [
+#    google_compute_resource_policy.quarterly_schedule.id
+#  ]
+  
 }
 
 resource "google_compute_resource_policy" "quarterly_schedule" {
