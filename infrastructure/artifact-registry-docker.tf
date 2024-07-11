@@ -10,7 +10,7 @@ resource "google_artifact_registry_repository" "artifact_registry_cnnx-poc-docke
     action = "DELETE"
     condition {
       tag_state    = "ANY"
-      older_than   = "60d"
+      older_than   = "5184000s"
     }
   }
   cleanup_policies {
