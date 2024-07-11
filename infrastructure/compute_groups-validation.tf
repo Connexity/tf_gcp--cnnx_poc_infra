@@ -52,3 +52,10 @@ resource "google_compute_resource_policy" "quarterly_schedule" {
     time_zone = "US/Central"
   }
 }
+
+resource "google_compute_instance_metadata_item" "group_validation_gitlab_token" {
+  provider = google-beta
+  instance_name = google_compute_instance.groups-validation.name
+  key = "group_validation_gitlab_token"
+  value = google_secret_manager_secret.group_validation_gitlab_token.replication_policy[0].automatic.value
+}
