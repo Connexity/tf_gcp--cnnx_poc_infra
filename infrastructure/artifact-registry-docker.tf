@@ -1,5 +1,5 @@
-resource "google_artifact_registry_repository" "cnnx-poc-docker" {
-  project = var.gcp_project
+resource "google_artifact_registry_repository" "artifact_registry_cnnx-poc-docker" {
+  project = "${var.gcp_project}"
   location = "us-central1"
   repository_id = "cnnx-poc-docker"
   format = "DOCKER"
