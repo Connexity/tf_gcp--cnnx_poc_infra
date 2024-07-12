@@ -4,13 +4,13 @@ resource "google_artifact_registry_repository" "artifact_registry_cnnx-poc-docke
   repository_id = "cnnx-poc-docker"
   format = "DOCKER"
   description = "Docker image repo for poc"
-  cleanup_policy_dry_run = true
+  cleanup_policy_dry_run = false
   cleanup_policies {
     id     = "delete-prerelease"
     action = "DELETE"
     condition {
       tag_state    = "ANY"
-      older_than   = "5184000s"
+      older_than   = "28800s"
     }
   }
   cleanup_policies {
