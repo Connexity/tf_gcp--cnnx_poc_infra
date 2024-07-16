@@ -222,7 +222,7 @@ resource "google_project_iam_member" "GRP_cnnx-marketplace--cnnx-prod-tracking--
   condition {
     title       = "os_login_marketplace_hdp_fasttrack"
     description = "os_login_marketplace_hdp_fasttrack"
-    expression  = "resource.type == "compute.googleapis.com/Instance" && resource.name.startsWith("fasttrack-hdp-prod-usc1")"
+    expression  = "resource.type == \"compute.googleapis.com/Instance\" && resource.name.startsWith(\"fasttrack-hdp-prod-usc1\")"
   }
 }
 
