@@ -215,3 +215,15 @@ resource "google_project_iam_member" "SA_terraform--cnnx-pos-infra--secretmanage
   project = "${var.gcp_project}"
 }
 
+resource "google_project_iam_member" "GRP_cnnx-marketplace--cnnx-prod-tracking--compute_osLogin_hdp_fasttrack" {
+  member = "group:cnnx-marketplace-eng@skimlinks.co.uk"
+  role = "roles/compute.osLogin"
+  project = "${var.gcp_project}"
+  condition {
+    title       = "os_login_marketplace_hdp_fasttrack"
+    description = "os_login_marketplace_hdp_fasttrack"
+    expression  = "resource.type == \"compute.googleapis.com/Instance\" && resource.name.startsWith(\"fasttrack-hdp-prod-usc1\")"
+  }
+}
+
+
