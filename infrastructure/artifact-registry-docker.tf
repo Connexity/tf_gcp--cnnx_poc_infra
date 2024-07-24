@@ -18,7 +18,7 @@ resource "google_artifact_registry_repository" "artifact_registry_cnnx-poc-docke
     action = "KEEP"
     condition {
       tag_state             = "TAGGED"
-      tag_prefixes          = ["release"]
+      tag_prefixes          = ["release-*"]
     }
   }
   cleanup_policies {
