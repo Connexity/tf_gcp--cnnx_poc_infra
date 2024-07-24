@@ -35,16 +35,6 @@ resource "google_dataproc_cluster" "fasttrack-hdp" {
     # Override or set some custom properties
     software_config {
       image_version = "1.3.95-debian10"
-      override_properties = {
-        "hadoop-log4j:log4j.rootLogger" = "WARN,console",
-        "hadoop-log4j:log4j.logger.org.apache.hadoop.mapred" = "ERROR",
-        "hadoop-log4j:log4j.logger.org.apache.hadoop.mapreduce" = "WARN",
-        "hadoop-log4j:log4j.logger.org.apache.hadoop.yarn" = "WARN",
-        "hadoop-log4j:mapred.audit.logger" = "WARN",
-        "hadoop-log4j:hdfs.audit.logger" = "WARN",
-        "hadoop-log4j:log4j.logger.org.apache.spar" = "WARN",
-        "pig:debug" = "ERROR"
-      }
     }
 
     gce_cluster_config {
