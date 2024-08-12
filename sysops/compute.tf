@@ -1,5 +1,5 @@
 locals {
-  test_instance_count = 0
+  test_instance_count = 2
   test_zone = "us-central1-c"
   test_labels = {
     owner = "sysops"
@@ -67,6 +67,6 @@ resource "google_compute_instance" "Instance_test-instances" {
     enable_vtpm                 = "true"
   }
 
-  tags = [ "allow-gce-usc1-stage", "allow-gce-lb" ]
+  tags = [ "allow-gce-usc1-stage", "allow-gce-lb", "allow-onprem" ]
   zone = local.test_zone
 }
