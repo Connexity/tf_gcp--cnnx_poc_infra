@@ -1,5 +1,5 @@
 locals {
-  test_instance_count = 2
+  test_instance_count = 0
   test_zone = "us-central1-c"
   test_labels = {
     owner = "sysops"
