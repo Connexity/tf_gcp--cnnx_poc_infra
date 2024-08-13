@@ -27,7 +27,7 @@ resource "google_compute_instance" "Instance_test-instances" {
 
   labels = local.test_labels
 
-  machine_type = "e2-micro"
+  machine_type = "e2-standard-2"
 
   metadata = {
     env            = "staging"
