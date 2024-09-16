@@ -1,8 +1,3 @@
-import {
-  id = "cnnx-poc-infra_terraform-import-test"
-  to = google_storage_bucket.bucket--cnnx-poc-infra_terraform-import-test
-}
-
 resource "google_storage_bucket" "bucket--cnnx-poc-infra_terraform-import-test" {
   name          = "cnnx-poc-infra_terraform-import-test"
   location      = "us-central1"
