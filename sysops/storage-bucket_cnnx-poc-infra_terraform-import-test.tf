@@ -12,8 +12,12 @@ resource "google_storage_bucket" "bucket--cnnx-poc-infra_terraform-import-test" 
 
 data "google_iam_policy" "cnnx-poc-infra_terraform-import-test_bucket_iam_policy" {
   binding {
+    role = "roles/storage.objectAdmin"
+    members = [ "serviceAccount:sftpaccess@cnnx-poc-infra.iam.gserviceaccount.com" ]
+  }
+  binding {
     role = "roles/storage.legacyBucketReader"
-    members = [ "projectViewer:${var.gcp_project}" ]
+    members = [ "serviceAccount:sftpaccess@cnnx-poc-infra.iam.gserviceaccount.com", "projectViewer:${var.gcp_project}" ]
   }
   binding {
     role = "roles/storage.legacyObjectOwner"
