@@ -6,6 +6,7 @@ resource "google_compute_instance" "Instance_solr-test-stage-instances" {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20230715"
       size = 250
       provisioned_iops = 15000
+      provisioned_throughput = "515MB"
       labels = {
         owner = "sysops"
         app = "solr-test"
