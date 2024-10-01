@@ -1,12 +1,6 @@
 resource "google_compute_instance" "Instance_solr-test-stage-instances" {
   count = 2
 
-  attached_disk {
-    device_name = "persistent-disk-1"
-    mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/us-central1-a/disks/${format("solr-test-stage%03s-1", count.index+1)}"
-  }
-
   boot_disk {
     initialize_params {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20230715"
