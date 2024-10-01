@@ -10,7 +10,8 @@ resource "google_compute_instance" "Instance_solr-test-stage-instances" {
   boot_disk {
     initialize_params {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2004-focal-v20230715"
-      size = 50
+      size = 250
+      provisioned_iops = 15000
       labels = {
         owner = "sysops"
         app = "solr-test"
@@ -19,7 +20,6 @@ resource "google_compute_instance" "Instance_solr-test-stage-instances" {
     auto_delete = "true"
     device_name = "${format("solr-test-stage%03s", count.index+1)}"
     mode        = "READ_WRITE"
-    provisioned_iops = 15000
   }
 
   can_ip_forward      = "false"
