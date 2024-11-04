@@ -32,3 +32,10 @@ resource "google_service_account" "SA_fasttrack-hdp" {
   disabled     = "false"
   display_name = "fasttrack-hdp"
 }
+
+resource "google_service_account" "SA_terraform-import-test" {
+  account_id   = "terraform-import-test"
+  description  = "terraform-import-test SA"
+  disabled     = "false"
+  display_name = "terraform-import-test"
+}
