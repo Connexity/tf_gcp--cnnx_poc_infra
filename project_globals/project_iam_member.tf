@@ -209,8 +209,15 @@ resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infr
   role = "roles/dataproc.worker"
   project = "${var.gcp_project}"
 }
+
 resource "google_project_iam_member" "SA_terraform--cnnx-pos-infra--secretmanager_admin" {
   member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/secretmanager.admin"
   project = "${var.gcp_project}"
 }
+
+#resource "google_project_iam_member" "SA_import-tests--cnnx-poc-infra--compute_viewer" {
+#  member = "serviceAccount:import-tests@cnnx-poc-infra.iam.gserviceaccount.com"
+#  role = "roles/roles/compute.viewer"
+#  project = "${var.gcp_project}"
+#}

@@ -32,3 +32,10 @@ resource "google_service_account" "SA_fasttrack-hdp" {
   disabled     = "false"
   display_name = "fasttrack-hdp"
 }
+
+resource "google_service_account" "SA_import-tests" {
+  account_id   = "import-tests"
+  description  = "import-tests SA"
+  disabled     = "false"
+  display_name = "import-tests"
+}
