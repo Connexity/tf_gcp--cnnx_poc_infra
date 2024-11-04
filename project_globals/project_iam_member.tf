@@ -216,8 +216,8 @@ resource "google_project_iam_member" "SA_terraform--cnnx-pos-infra--secretmanage
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--custom-role--velero_backup" {
+resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-infra--custom-role--bucket_list_ro" {
   member = "serviceAccount:vuln-patching-notifications@cnnx-infra-admin.iam.gserviceaccount.com"
-  role = "projects/cnnx-infra-admin/roles/velero.backup"
+  role = "projects/cnnx-stage-inventory/roles/bucket_list_ro"
   project = "${var.gcp_project}"
 }
