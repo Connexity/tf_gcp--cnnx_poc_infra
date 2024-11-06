@@ -62,6 +62,8 @@ data "google_iam_policy" "instance_admin" {
   }
 }
 resource "google_compute_instance_iam_policy" "instance_admin_policy" {
+  project = "${var.gcp_project}"  
+  zone = "us-central1-a"
   instance_name = google_compute_instance.groups-validation.name
   policy_data = data.google_iam_policy.instance_admin.policy_data
 }
