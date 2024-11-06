@@ -53,3 +53,16 @@ resource "google_compute_resource_policy" "quarterly_schedule" {
   }
 }
 
+data "google_iam_policy" "instance_admin" {
+  binding {
+    role = "roles/compute.instanceAdmin.v1"
+    members = [
+      "serviceAccount:service-832312746254@compute-system.iam.gserviceaccount.com"
+    ]
+  }
+}
+resource "google_compute_instance_iam_policy" "instance_admin_policy" {
+  instance_name = google_compute_instance.groups-validation.name
+  policy_data = data.google_iam_policy.instance_admin.policy_data
+}
+ 
