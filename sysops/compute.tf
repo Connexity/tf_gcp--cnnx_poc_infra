@@ -9,7 +9,7 @@ locals {
 
 resource "google_compute_disk" "securitypatchtest_disks" {
   count = local.test_instance_count
-  name = "${format("securitypatchtest%03s-1, count.index+1")}"
+  name = "securitypatchtest001-1"
   type    = "pd-ssd"
   zone    = "us-central1-a"
   size    = "50"
@@ -25,7 +25,7 @@ resource "google_compute_instance" "Instance_test-instances" {
   attached_disk {
     device_name = "persistent-disk-1"
     mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/${var.gcp_project}/zones/${local.test_zone}/disks/${format("securitypatchtest%03s-1", count.index+1)}"
+    source      = "https://www.googleapis.com/compute/v1/projects/${var.gcp_project}/zones/${local.test_zone}/disks/securitypatchtest001-1"
   }
 
   boot_disk {
