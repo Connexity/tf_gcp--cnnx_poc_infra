@@ -9,7 +9,7 @@ locals {
 
 resource "google_compute_disk" "securitypatchtest_disks" {
   count = local.test_instance_count
-  name = ${format("securitypatchtest%03s-1, count.index+1")}
+  name = "${format("securitypatchtest%03s-1, count.index+1")}"
   type    = "pd-ssd"
   zone    = "us-central1-a"
   size    = "50"
