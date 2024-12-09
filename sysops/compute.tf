@@ -11,7 +11,7 @@ resource "google_compute_disk" "securitypatchtest_disks" {
   count = local.test_instance_count
   name = "securitypatchtest001-1"
   type    = "pd-ssd"
-  zone    = "us-central1-a"
+  zone    = "us-central1-c"
   size    = "50"
   labels = {
     app = "solr-it"
