@@ -5,6 +5,9 @@ variable "map_persistent-disk" {
     "mapped-disk01" = [ "pd-standard", "us-central1-a", "50" ],
     "mapped-disk02" = [ "pd-ssd", "us-central1-c", "100" ],
     "mapped-disk03" = [ "pd-ssd", "us-central1-f", "120" ],
+    "mapped-disk04" = [ "pd-standard", "us-central1-a", "50" ],
+    "mapped-disk05" = [ "pd-ssd", "us-central1-c", "100" ],
+    "mapped-disk06" = [ "pd-ssd", "us-central1-f", "50" ],
   }
 }
 
