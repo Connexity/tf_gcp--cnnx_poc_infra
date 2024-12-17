@@ -2,9 +2,9 @@ variable "map_persistent-disk" {
   description = "A way to create a persistent disk in different zones and sizes"
   type        = map(list(string))
   default = {
-    "mapped_disk01" = [ "pd-standard", "us-central1-a", "50" ],
-    "mapped_disk02" = [ "pd-ssd", "us-central1-c", "100" ],
-    "mapped_disk03" = [ "pd-ssd", "us-central1-f", "120" ],
+    "mapped-disk01" = [ "pd-standard", "us-central1-a", "50" ],
+    "mapped-disk02" = [ "pd-ssd", "us-central1-c", "100" ],
+    "mapped-disk03" = [ "pd-ssd", "us-central1-f", "120" ],
   }
 }
 
