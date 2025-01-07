@@ -79,7 +79,7 @@ resource "google_compute_instance_group" "lb_umig_usc1g_c_solr_test_stage_tf" {
   name = local.test_solr_cluster_umig_name
   zone = local.test_solr_cluster_zone
   project   = "${var.gcp_project}"
-  instances = [ for x in google_compute_instance.Instance_solr-test-stage-instances: x.id ]
+  instances = [ for x in google_compute_instance.Instance_solr-test-stage-instances: x.self_link ]
   named_port {
     name = "tcp9100"
     port = "9100"
