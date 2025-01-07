@@ -1,5 +1,5 @@
 locals {
-  test_solr_cluster_instance_count = 3
+  test_solr_cluster_instance_count = 2
   test_solr_cluster_name_prefix = "solr-test-stage"
   test_solr_cluster_zone = "us-central1-c"
   test_solr_cluster_machine_type = "n4-highmem-8"
