@@ -1,5 +1,5 @@
 resource "google_compute_instance" "instance_sftpgo-stage" {
-  name = "gitlab-stage002"
+  name = "sftpgo-stage001"
   machine_type = "n4-standard-4"
   zone         = "us-central1-a"
   tags = ["allow-gce-usc1-infra", "allow-ingress", "allow-onprem", "allow-gce-usc1-stage" ]
@@ -24,7 +24,7 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
       #provisioned_throughput = 515
     }
     auto_delete = "false"
-    device_name = "sftpgo-stage002"
+    device_name = "sftpgo-stage001"
     mode        = "READ_WRITE"
   }
     
