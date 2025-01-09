@@ -45,7 +45,7 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
   }
 
   service_account {
-    email  = "sftp-access@cnnx-poc-infra.iam.gserviceaccount.com"
+    email  = "sftpaccess@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
   
