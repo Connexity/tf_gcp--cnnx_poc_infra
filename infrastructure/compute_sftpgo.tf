@@ -12,7 +12,7 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
   }
 
   can_ip_forward      = "false"
-  deletion_protection = "true"
+  deletion_protection = "false"
   enable_display      = "false"
 
   boot_disk {
