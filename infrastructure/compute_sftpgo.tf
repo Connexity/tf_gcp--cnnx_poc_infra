@@ -5,12 +5,6 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
   tags = ["allow-gce-usc1-infra", "allow-ingress", "allow-onprem", "allow-gce-usc1-stage" ]
   project = "${var.gcp_project}"
 
-  shielded_instance_config {
-    enable_integrity_monitoring = "true"
-    enable_secure_boot          = "true"
-    enable_vtpm                 = "true"
-  }
-
   can_ip_forward      = "false"
   deletion_protection = "false"
   enable_display      = "false"
@@ -20,7 +14,7 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20241218"
       size = 50
     }
-    auto_delete = "false"
+    auto_delete = "true"
     device_name = "sftpgo-stage001"
     mode        = "READ_WRITE"
   }
@@ -32,13 +26,25 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
 
   metadata = {
     env                = "stage"
-    startup-script-url = "http://gitlab.shopzilla.com/ansible/awx-boostrap-script/-/raw/master/awxprovision.py"
   }
 
   network_interface {
     network            = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/global/networks/cnnx-infra-networking-core-vpc"
+    queue_count        = "0"
+    stack_type         = "IPV4_ONLY"
     subnetwork         = "https://www.googleapis.com/compute/v1/projects/cnnx-infra-networking/regions/us-central1/subnetworks/cnnx-usc1-stage-gce-1"
     subnetwork_project = "cnnx-infra-networking"
+  }
+
+  reservation_affinity {
+    type = "ANY_RESERVATION"
+  }
+
+  scheduling {
+    automatic_restart   = "true"
+    min_node_cpus       = "0"
+    on_host_maintenance = "MIGRATE"
+    preemptible         = "false"
   }
 
   service_account {
@@ -46,4 +52,9 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
   
+  shielded_instance_config {
+    enable_integrity_monitoring = "true"
+    enable_secure_boot          = "true"
+    enable_vtpm                 = "true"
+  }
 }
