@@ -19,9 +19,6 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
     initialize_params {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20241218"
       size = 50
-      #commented out to test default iops and throughput
-      #provisioned_iops = 10000
-      #provisioned_throughput = 515
     }
     auto_delete = "false"
     device_name = "sftpgo-stage001"
