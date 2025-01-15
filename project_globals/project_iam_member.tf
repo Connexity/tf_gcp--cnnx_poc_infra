@@ -14,7 +14,7 @@ resource "google_project_iam_member" "SA_awx-sa--cnnx-infra-admin--osconfig_vuln
 
 resource "google_project_iam_member" "SA_awx-sa--cnnx-infra-admin--artifactRegistryReader" {
   member = "serviceAccount:awx-sa@cnnx-infra-admin.iam.gserviceaccount.com"
-  role = "roles/roles/artifactregistry.reader"
+  role = "roles/artifactregistry.reader"
   project = "${var.gcp_project}"
 }
 
