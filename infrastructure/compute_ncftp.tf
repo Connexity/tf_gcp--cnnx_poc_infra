@@ -20,7 +20,7 @@ resource "google_compute_instance" "instance_ncftp-stage" {
   }
     
   labels = {
-    app   = "sftp"
+    app   = "ncftp"
     owner = "sysops"
   }
 
