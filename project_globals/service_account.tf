@@ -33,10 +33,10 @@ resource "google_service_account" "SA_fasttrack-hdp" {
   display_name = "fasttrack-hdp"
 }
 
-resource "google_service_account" "SA_ncftp" {
-  account_id   = "ncftp"
+resource "google_service_account" "SA_ncftp-stage" {
+  account_id   = "ncftp-stage"
   description  = "ncftp SA"
   disabled     = "false"
-  display_name = "ncftp"
+  display_name = "ncftp-stage"
 }
 

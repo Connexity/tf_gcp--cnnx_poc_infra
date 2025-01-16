@@ -336,20 +336,20 @@ resource "google_project_iam_member" "SA_firebase-service-account--firebase-sa-m
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--logging_logWriter" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
+resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--logging_logWriter" {
+  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/logging.logWriter"
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--monitoring_metricWriter" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
+resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/monitoring.metricWriter"
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
+resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--monitoring_viewer" {
+  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/monitoring.viewer"
   project = "${var.gcp_project}"
 }
