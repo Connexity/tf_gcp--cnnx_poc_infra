@@ -18,6 +18,12 @@ resource "google_project_iam_member" "SA_awx-sa--cnnx-infra-admin--artifactRegis
   project = "${var.gcp_project}"
 }
 
+resource "google_project_iam_member" "SA_k8s-sa--cnnx-infra-admin--artifactRegistryReader" {
+  member = "serviceAccount:k8s-sa@cnnx-stage-k8s.iam.gserviceaccount.com"
+  role = "roles/artifactregistry.reader"
+  project = "${var.gcp_project}"
+}
+
 resource "google_project_iam_member" "SA_dui-sa--cnnx-infra-admin--compute_osLogin" {
   member = "serviceAccount:dui-sa@cnnx-infra-admin.iam.gserviceaccount.com"
   role = "roles/compute.osLogin"

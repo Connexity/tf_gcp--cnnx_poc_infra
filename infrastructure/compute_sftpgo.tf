@@ -58,3 +58,4 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
     enable_vtpm                 = "true"
   }
 }
+
