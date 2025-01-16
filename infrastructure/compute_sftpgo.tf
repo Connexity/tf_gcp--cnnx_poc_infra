@@ -11,7 +11,7 @@ resource "google_compute_instance" "instance_sftpgo-stage" {
 
   boot_disk {
     initialize_params {
-      image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20241218"
+      image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20250112"
       size = 50
     }
     auto_delete = "true"
