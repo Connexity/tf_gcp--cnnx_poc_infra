@@ -32,3 +32,11 @@ resource "google_service_account" "SA_fasttrack-hdp" {
   disabled     = "false"
   display_name = "fasttrack-hdp"
 }
+
+resource "google_service_account" "SA_ncftp" {
+  account_id   = "ncftp"
+  description  = "ncftp SA"
+  disabled     = "false"
+  display_name = "ncftp"
+}
+
