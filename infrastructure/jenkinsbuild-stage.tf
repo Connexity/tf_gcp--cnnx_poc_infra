@@ -8,12 +8,17 @@ resource "google_compute_instance" "jenkinsbuild_compute_instance" {
   machine_type = "e2-standard-4"
   zone         = "us-central1-a"
   tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
+  allow_stopping_for_update = true
 
   boot_disk {
     initialize_params {
       size        = "250"
-      image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2004-focal-v20210413"
+      image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2204-jammy-v20240126"
     }
+  }
+
+  shielded_instance_config {
+    enable_secure_boot = true
   }
 
   labels = {
