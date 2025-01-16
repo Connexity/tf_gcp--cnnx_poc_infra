@@ -9,13 +9,6 @@ resource "google_compute_instance" "instance_ncftp-stage" {
   deletion_protection = "false"
   enable_display      = "false"
 
-  attached_disk {
-    device_name = "persistent-disk-1"
-    mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/us-central1-a/disks/ncftp-stage001-1"
-    size = 
-  }
-
   boot_disk {
     initialize_params {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20250112"
