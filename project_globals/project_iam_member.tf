@@ -72,24 +72,6 @@ resource "google_project_iam_member" "SA_gce-sa--cnnx-poc-infra--iam_serviceAcco
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--logging_logWriter" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/logging.logWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--monitoring_metricWriter" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.metricWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_ncftp--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.viewer"
-  project = "${var.gcp_project}"
-}
-
 resource "google_project_iam_member" "SA_terraform--cnnx-poc-infra--iam_serviceAccountAdmin" {
   member = "serviceAccount:terraform@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/iam.serviceAccountAdmin"
