@@ -58,3 +58,10 @@ resource "google_compute_instance" "instance_ncftp-stage" {
     enable_vtpm                 = "true"
   }
 }
+
+resource "google_compute_disk" "ncftp-stage001-1" {
+  name = "ncftp-stage001-1"
+  size = 100
+  zone = "us-central1-a"
+  type = "hyperdisk-balanced"
+}
