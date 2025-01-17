@@ -64,4 +64,8 @@ resource "google_compute_disk" "ncftp-stage001-1" {
   size = 100
   zone = "us-central1-a"
   type = "hyperdisk-balanced"
+  labels = {
+    app   = "ncftp"
+    owner = "sysops"
+  }
 }
