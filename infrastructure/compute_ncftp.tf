@@ -69,3 +69,8 @@ resource "google_compute_disk" "ncftp-stage001-1" {
     owner = "sysops"
   }
 }
+
+resource "google_compute_attached_disk" "attach-disk-ncftp-stage001-1" {
+  disk     = google_compute_disk.ncftp-stage001-1.id
+  instance = google_compute_instance.instance_ncftp-stage.id
+}
