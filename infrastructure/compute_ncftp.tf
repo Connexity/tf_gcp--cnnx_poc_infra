@@ -48,7 +48,7 @@ resource "google_compute_instance" "instance_ncftp-stage" {
   }
 
   service_account {
-    email  = "ncftp@cnnx-poc-infra.iam.gserviceaccount.com"
+    email  = "ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
   
