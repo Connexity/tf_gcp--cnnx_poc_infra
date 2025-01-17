@@ -18,7 +18,13 @@ resource "google_compute_instance" "instance_ncftp-stage" {
     device_name = "ncftp-stage001"
     mode        = "READ_WRITE"
   }
-    
+
+  attached_disk {
+    device_name = "persistent-disk-1"
+    mode        = "READ_WRITE"
+    source      = "https://www.googleapis.com/compute/v1/projects/cnnx-poc-infra/zones/us-central1-a/disks/ncftp-stage001-1"
+  }
+
   labels = {
     app   = "ncftp"
     owner = "sysops"
@@ -68,9 +74,4 @@ resource "google_compute_disk" "ncftp-stage001-1" {
     app   = "ncftp"
     owner = "sysops"
   }
-}
-
-resource "google_compute_attached_disk" "attach-disk-ncftp-stage001-1" {
-  disk     = google_compute_disk.ncftp-stage001-1.id
-  instance = google_compute_instance.instance_ncftp-stage.id
 }
