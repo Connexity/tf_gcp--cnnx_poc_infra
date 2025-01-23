@@ -1,6 +1,6 @@
 resource "google_compute_instance" "rundeck-stage" {
   name = "rundeckstage001"
-  machine_type = "e2-medium"
+  machine_type = "e2-standard-2"
   zone         = "us-central1-a"
   tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
 
