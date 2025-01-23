@@ -7,3 +7,25 @@ resource "google_logging_metric" "logging-metric_custom-role-monitoring" {
     value_type  = "INT64"
   }
 }
+
+resource "google_monitoring_alert_policy" "alert_policy-custom-role-monitoring" {
+  display_name = "Custom Role Created Edited, or Deleted"
+  combiner     = "OR"
+  conditions {
+    display_name = "Custom Role Created Edited, or Deleted"
+    condition_threshold {
+      filter     = "resource.type = \"global\" AND metric.type = \"logging.googleapis.com/user/custom-role-monitoring/metric\""
+      duration   = "180s"
+      comparison = "COMPARISON_GT"
+      aggregations {
+        alignment_period   = "1200s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+      trigger {
+        count   = "1"
+        percent = "0"
+      }
+    }
+  }
+  notification_channels = ["projects/cnnx-poc-infra/notificationChannels/4565085722272089401"]
+}
