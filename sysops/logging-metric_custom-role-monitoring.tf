@@ -19,7 +19,7 @@ resource "google_monitoring_alert_policy" "alert_policy-custom-role-monitoring" 
       comparison = "COMPARISON_GT"
       aggregations {
         alignment_period   = "1200s"
-        per_series_aligner = "ALIGN_RATE"
+        per_series_aligner = "ALIGN_DELTA"
       }
       trigger {
         count   = "1"
