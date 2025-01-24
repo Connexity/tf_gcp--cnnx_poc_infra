@@ -9,10 +9,10 @@ resource "google_logging_metric" "logging-metric_custom-role-monitoring" {
 }
 
 resource "google_monitoring_alert_policy" "alert_policy-custom-role-monitoring" {
-  display_name = "Custom Role Created Edited, or Deleted"
+  display_name = "A Custom Role has been created, edited or deleted"
   combiner     = "OR"
   conditions {
-    display_name = "Custom Role Created Edited, or Deleted"
+    display_name = "A Custom Role has been created, edited or deleted"
     condition_threshold {
       filter     = "resource.type = \"global\" AND metric.type = \"logging.googleapis.com/user/custom-role-monitoring/metric\""
       duration   = "180s"
