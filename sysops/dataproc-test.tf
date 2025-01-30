@@ -20,7 +20,7 @@ resource "google_dataproc_cluster" "test-sysops-1" {
     }
 
     worker_config {
-      num_instances    = 3
+      num_instances    = 4
       machine_type     = "n2-standard-8"
       disk_config {
         boot_disk_type    = "pd-standard"
