@@ -6,7 +6,7 @@ variable "gce_instance_backups" {
 }
 
 # Create the Google Vault
-resource "google_backup_dr_backup_vault" "cnnx-backup-vault" {
+resource "google_backup_dr_backup_vault" "cnnx_poc-backup-vault" {
   provider                                   = google-beta
   location                                   = "us-central1"
   project                                    = "${var.gcp_project}"
@@ -25,7 +25,7 @@ resource "google_backup_dr_backup_plan" "cnnx-poc-daily" {
   project        = "${var.gcp_project}"
   backup_plan_id = "cnnx-poc-daily-backups"
   resource_type  = "compute.googleapis.com/Instance"
-  backup_vault   = google_backup_dr_backup_vault.cnnx-backup-vault.name
+  backup_vault   = google_backup_dr_backup_vault.cnnx_poc-backup-vault.name
 
   backup_rules {
     rule_id               = "rule-1"
@@ -44,13 +44,13 @@ resource "google_backup_dr_backup_plan" "cnnx-poc-daily" {
 }
 
 # Create a backup plan association.
-resource "google_backup_dr_backup_plan_association" "default" {
+resource "google_backup_dr_backup_plan_association" "instance_backup-plan" {
   count = length(var.gce_instance_backups)
   provider                   = google-beta
   location                   = "us-central1"
   project                    = "${var.gcp_project}"
   backup_plan_association_id = "cnnx-poc-daily-backups"
-  resource                   = var.gce_instance_backups[count.index]
+  resource                   = google_compute_instance.var.gce_instance_backups[count.index].id
   resource_type              = "compute.googleapis.com/Instance"
   backup_plan                = google_backup_dr_backup_plan.cnnx-poc-daily.name
 }
