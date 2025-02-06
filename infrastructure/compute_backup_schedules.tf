@@ -2,10 +2,10 @@
 variable "gce_instance_backups" {
   description = "List of GCE instance backups to associate with backup plan associations."
   type        = map(list(string))
-  default     = [
-    "gitlab-stage001" = [ "cnnx-poc-daily-backups", "us-central1-a" ],
-    "rundeck-stage" = [ "cnnx-poc-daily-backups", "us-central1-a" ]
-  ]
+  default     = {
+    gitlab-stage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ],
+    rundeck-stage = [ "cnnx-poc-daily-backups", "us-central1-a" ]
+  }
 }
 
 # Create the Google Vault
