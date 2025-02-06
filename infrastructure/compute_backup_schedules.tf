@@ -45,7 +45,7 @@ resource "google_backup_dr_backup_plan" "cnnx-poc-daily" {
 
 # Create a backup plan association.
 resource "google_backup_dr_backup_plan_association" "instance_backup-plan" {
-  for_each = toset(gce_instance_backups)
+  for_each = toset(var.gce_instance_backups)
   provider                   = google-beta
   location                   = "us-central1"
   project                    = "${var.gcp_project}"
