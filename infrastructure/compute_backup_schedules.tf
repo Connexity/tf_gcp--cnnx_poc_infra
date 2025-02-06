@@ -1,8 +1,8 @@
 # Declare Variables
 variable "gce_instance_backups" {
   description = "List of GCE instance backups to associate with backup plan associations."
-  type        = list(string)
-  default     = ["instance_gitlab-stage001", "rundeck-stage"]
+  type        = list(object)
+  default     = [instance_gitlab-stage001, rundeck-stage]
 }
 
 # Create the Google Vault
