@@ -52,7 +52,7 @@ resource "google_backup_dr_backup_plan_association" "instance_backup-plan" {
   provider                   = google-beta
   location                   = "us-central1"
   project                    = "${var.gcp_project}"
-  backup_plan_association_id = each.value[0]
+  backup_plan_association_id = join("-", [each.key, each.value[0]])
   resource                   = "projects/${var.gcp_project}/zones/${each.value[1]}/instances/${each.key}"
   resource_type              = "compute.googleapis.com/Instance"
   backup_plan                = google_backup_dr_backup_plan.cnnx-poc-daily.name
