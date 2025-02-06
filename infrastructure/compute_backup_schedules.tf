@@ -1,9 +1,11 @@
 # Declare Variables
 variable "gce_instance_backups" {
   description = "List of GCE instance backups to associate with backup plan associations."
-  type        = list(string)
-#  default     = ["google_compute_instance.instance_gitlab-stage001.id", "google_compute_instance.rundeck-stage.id"]
-  default     = ["gitlab-stage001", "rundeck-stage"]
+  type        = map(list(string))
+  default     = {
+    gitlab-stage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ],
+    rundeck-stage = [ "cnnx-poc-daily-backups", "us-central1-a" ]
+  }
 }
 
 # Create the Google Vault
@@ -46,12 +48,12 @@ resource "google_backup_dr_backup_plan" "cnnx-poc-daily" {
 
 # Create a backup plan association.
 resource "google_backup_dr_backup_plan_association" "instance_backup-plan" {
-  for_each = toset(var.gce_instance_backups)
+  for_each = var.gce_instance_backups
   provider                   = google-beta
   location                   = "us-central1"
   project                    = "${var.gcp_project}"
-  backup_plan_association_id = "cnnx-poc-daily-backups"
-  resource                   = each.key
+  backup_plan_association_id = each.value[0]
+  resource                   = "projects/${var.gcp_project}/zones/${each.value[1]}/instances/${each.key}"
   resource_type              = "compute.googleapis.com/Instance"
   backup_plan                = google_backup_dr_backup_plan.cnnx-poc-daily.name
 }
