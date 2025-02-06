@@ -1,7 +1,7 @@
 # Declare Variables
 variable "gce_instance_backups" {
   description = "List of GCE instance backups to associate with backup plan associations."
-  type        = list(strings)
+  type        = list(string)
   default     = ["google_compute_instance.instance_gitlab-stage001.id", "google_compute_instance.rundeck-stage.id"]
 }
 
