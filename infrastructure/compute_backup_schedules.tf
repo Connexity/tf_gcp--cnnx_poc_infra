@@ -33,7 +33,7 @@ resource "google_backup_dr_backup_plan" "cnnx-poc-daily" {
 
     standard_schedule {
       recurrence_type  = "DAILY"
-      time_zone        = "PST"
+      time_zone        = "UTC"
 
       backup_window {
         start_hour_of_day = 0
