@@ -4,5 +4,6 @@ resource "google_service_account_iam_binding" "SA_gce-sa--iam_serviceAccountUser
 
   members = [
     "group:cnnx-serviceaccount-gce-oslogin@skimlinks.co.uk",
+    "serviceAccount:service-832312746254@gcp-sa-vmmigration.iam.gserviceaccount.com"
   ]
 }
