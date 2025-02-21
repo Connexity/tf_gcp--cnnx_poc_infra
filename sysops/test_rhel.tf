@@ -56,10 +56,4 @@ resource "google_compute_instance" "Instance_rhel7-test-tf-instance" {
     email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
-
-  shielded_instance_config {
-    enable_integrity_monitoring = "true"
-    enable_secure_boot          = "true"
-    enable_vtpm                 = "true"
-  }
 }
