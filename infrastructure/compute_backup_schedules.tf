@@ -4,8 +4,7 @@ variable "gce_instance_backups" {
   type        = map(list(string))
   default     = {
     gitlab-stage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ],
-    rundeckstage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ],
-    gcpsftpstage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ]
+    rundeckstage001 = [ "cnnx-poc-daily-backups", "us-central1-a" ]
   }
 }
 
