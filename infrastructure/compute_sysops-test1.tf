@@ -55,3 +55,34 @@ resource "google_compute_instance" "Instance_backupteststage001-instance" {
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 }
+
+resource "google_compute_disk_resource_policy_attachment" "attachment-backupteststage001" {
+  name = google_compute_resource_policy.n4-snapshot-schedule.name
+  disk = "projects/cnnx-poc-infra/zones/us-central1-a/disks/backupteststage001"
+  zone = "us-central1-a"
+}
+
+resource "google_compute_resource_policy" "n4-snapshot-schedule" {
+  name   = "n4-snapshot-schedule"
+  region = "us-central1"
+  snapshot_schedule_policy {
+    schedule {
+      daily_schedule {
+        days_in_cycle  = 1
+        start_time     = "23:00"
+      }
+    }
+    retention_policy {
+      max_retention_days    = 4
+      on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
+    }
+    snapshot_properties {
+      labels = {
+        app = "test",
+        owner = "sysops"
+      }
+      storage_locations = ["us-central1"]
+      guest_flush       = true
+    }
+  }
+}
