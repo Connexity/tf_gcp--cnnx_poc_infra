@@ -57,6 +57,12 @@ resource "google_compute_instance" "Instance_backupteststage001-instance" {
   }
 }
 
+resource "google_compute_disk_resource_policy_attachment" "attachment-backupteststage001" {
+  name = google_compute_resource_policy.n4-snapshot-schedule.name
+  disk = "projects/cnnx-poc-infra/zones/us-central1-a/disks/backupteststage001"
+  zone = "us-central1-a"
+}
+
 resource "google_compute_resource_policy" "n4-snapshot-schedule" {
   name   = "n4-snapshot-schedule"
   region = "us-central1"
