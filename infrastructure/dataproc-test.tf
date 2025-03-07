@@ -11,7 +11,7 @@ resource "google_dataproc_cluster" "test-sysops-1" {
     staging_bucket = "fasttrack-hpd-staging-cnnx-poc-infra"
 
     master_config {
-      num_instances = 1
+      num_instances = 3
       machine_type  = "n2-standard-8"
       disk_config {
         boot_disk_type    = "pd-standard"
