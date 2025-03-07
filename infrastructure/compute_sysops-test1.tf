@@ -21,7 +21,6 @@ resource "google_compute_instance" "Instance_backupteststage001-instance" {
     auto_delete = "true"
     device_name = "backupteststage001"
     mode        = "READ_WRITE"
-    resource_policy = google_compute_resource_policy.n4-snapshot-schedule.self_link
   }
 
   can_ip_forward      = "false"
