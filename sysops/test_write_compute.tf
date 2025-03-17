@@ -4,6 +4,7 @@ variable "gce_instance_variables" {
   default = {
     rimcachepoc001 = ["us-central1-a", "e2-standard-2", "rimcachepoc-multi-write"]
     rimcachepoc002 = ["us-central1-c", "e2-standard-2", "rimcachepoc-multi-write"]
+  }
 }
 
 resource "google_compute_disk" "rimcachepoc_multi_write_compute_disk_1" {
@@ -30,10 +31,10 @@ resource "google_compute_instance" "rimcachepoc_compute_instance" {
     initialize_params {
       size        = "50"
       image      = "projects/cnnx-infra-osimages/global/images/cnnx-ubuntu-2204-jammy-v20240126"
-    }
-    labels = {
-      app   = "rimcache"
-      owner = "sysops"
+      labels = {
+        app   = "rimcache"
+        owner = "sysops"
+      } 
     }
   }
 
