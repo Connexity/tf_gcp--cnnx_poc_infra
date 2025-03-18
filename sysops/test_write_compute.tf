@@ -2,20 +2,9 @@ variable "gce_instance_variables" {
   description = "Used to create unique instances with standard layout" 
   type = map(list(string))
   default = {
-    rimcachepoc001 = ["us-central1-a", "e2-standard-2", "rimcachepoc-multi-write"]
-    rimcachepoc002 = ["us-central1-c", "e2-standard-2", "rimcachepoc-multi-write"]
+    rimcachepoc001 = ["us-central1-a", "e2-standard-2"]
+    rimcachepoc002 = ["us-central1-c", "e2-standard-2"]
   }
-}
-
-resource "google_compute_disk" "rimcachepoc_multi_write_compute_disk_1" {
-  name  = "rimcachepoc-multi-write"
-  type  = "pd-standard"
-  zone  = "us-central1"
-  labels = {
-    app   = "rimcache"
-    owner = "sysops"
-  }
-  multi_writer = true
 }
 
 resource "google_compute_instance" "rimcachepoc_compute_instance" {
@@ -36,12 +25,6 @@ resource "google_compute_instance" "rimcachepoc_compute_instance" {
         owner = "sysops"
       } 
     }
-  }
-
-  attached_disk {
-    device_name = each.value[2]
-    mode        = "READ_WRITE"
-    source      = "https://www.googleapis.com/compute/v1/projects/${var.gcp_project}/zones/${each.value[0]}/disks/${each.value[2]}"
   }
 
   labels = {
