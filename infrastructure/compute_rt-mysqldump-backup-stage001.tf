@@ -50,7 +50,7 @@ resource "google_compute_instance" "instance_rt-mysqldump-backup-stage001" {
   }
 
   service_account {
-    email  = "gce-sa@cnnx-stage-infra.iam.gserviceaccount.com"
+    email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
   
