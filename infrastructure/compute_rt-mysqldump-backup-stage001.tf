@@ -1,6 +1,6 @@
 resource "google_compute_instance" "instance_rt-mysqldump-backup-stage001" {
   name = "rt-mysqldump-backup-stage001"
-  machine_type = "n4-standard-4"
+  machine_type = "n4-standard-2"
   zone         = "us-central1-a"
   tags = ["allow-gce-usc1-infra", "allow-ingress", "allow-onprem", "allow-gce-usc1-stage" ]
   project = "${var.gcp_project}"
@@ -13,6 +13,8 @@ resource "google_compute_instance" "instance_rt-mysqldump-backup-stage001" {
     initialize_params {
       image = "cnnx-infra-osimages/cnnx-ubuntu-2204-jammy-v20250112"
       size = 250
+      provisioned_throughput = 240
+      provisioned_iops = 15000
     }
     auto_delete = "true"
     device_name = "rt-mysqldump-backup-stage001"
