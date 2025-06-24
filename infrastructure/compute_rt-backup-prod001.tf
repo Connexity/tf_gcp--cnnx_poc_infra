@@ -1,5 +1,5 @@
 resource "google_compute_instance" "instance_rt-backup-stage001" {
-  name = "rt-backup-prod001"
+  name = "rt-backup-stage001"
   machine_type = "n4-standard-2"
   zone         = "us-central1-f"
   tags = ["allow-onprem", "allow-gce-usc1-stage", "allow-ingress", "allow-internal-workstation-endpoints-all-ports" ]
