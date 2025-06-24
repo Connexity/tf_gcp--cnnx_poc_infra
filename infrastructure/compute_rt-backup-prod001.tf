@@ -2,7 +2,7 @@ resource "google_compute_instance" "instance_rt-backup-stage001" {
   name = "rt-backup-prod001"
   machine_type = "n4-standard-2"
   zone         = "us-central1-f"
-  tags = ["allow-gce-usc1-infra" ,"allow-onprem", "allow-gce-usc1-prod", "allow-ingress", "allow-internal-workstation-endpoints-all-ports" ]
+  tags = ["allow-onprem", "allow-gce-usc1-stage", "allow-ingress", "allow-internal-workstation-endpoints-all-ports" ]
   project = "${var.gcp_project}"
 
   can_ip_forward      = "false"
@@ -70,7 +70,7 @@ data "google_iam_policy" "rt-backup-stage001_instace_admin_iam_binding" {
   }
 }
 
-resource "google_compute_instance_iam_policy" "rt-backup-prod001_instace_admin_iam_policy" {
+resource "google_compute_instance_iam_policy" "rt-backup-stage001_instace_admin_iam_policy" {
   project = google_compute_instance.instance_rt-backup-stage001.project
   zone = google_compute_instance.instance_rt-backup-stage001.zone
   instance_name = google_compute_instance.instance_rt-backup-stage001.name
