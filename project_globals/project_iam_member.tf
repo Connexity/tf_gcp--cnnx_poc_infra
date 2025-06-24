@@ -373,3 +373,8 @@ resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--monitoring_v
   project = "${var.gcp_project}"
 }
 
+resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--compute.viewer" {
+  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/compute.viewer"
+  project = "${var.gcp_project}"
+}
