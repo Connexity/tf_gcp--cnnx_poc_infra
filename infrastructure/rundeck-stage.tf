@@ -2,7 +2,7 @@ resource "google_compute_instance" "rundeck-stage" {
   name = "rundeckstage001"
   machine_type = "e2-standard-2"
   zone         = "us-central1-a"
-  tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem"]
+  tags = ["allow-ingress", "allow-gce-usc1-stage", "allow-onprem", "allow-internal-workstation-endpoints-all-ports" ]
 
   boot_disk {
     initialize_params {
@@ -30,6 +30,6 @@ resource "google_compute_instance" "rundeck-stage" {
     email  = "gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
-  
+
 }
 

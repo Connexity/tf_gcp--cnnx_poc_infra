@@ -353,3 +353,23 @@ resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--monitoring
   role = "roles/monitoring.viewer"
   project = "${var.gcp_project}"
 }
+
+
+resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--logging_logWriter" {
+  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/logging.logWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--monitoring_metricWriter" {
+  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.metricWriter"
+  project = "${var.gcp_project}"
+}
+
+resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--monitoring_viewer" {
+  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
+  role = "roles/monitoring.viewer"
+  project = "${var.gcp_project}"
+}
+

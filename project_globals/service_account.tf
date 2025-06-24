@@ -40,3 +40,9 @@ resource "google_service_account" "SA_ncftp-stage" {
   display_name = "ncftp-stage"
 }
 
+resource "google_service_account" "SA_rt-backup" {
+  account_id   = "rt-backup"
+  description  = "rt-backup poc"
+  disabled     = "false"
+  display_name = "rt-backup"
+}
