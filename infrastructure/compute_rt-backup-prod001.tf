@@ -65,7 +65,7 @@ data "google_iam_policy" "rt-backup-stage001_instace_admin_iam_binding" {
   binding {
     role = "roles/compute.instanceAdmin.v1"
     members = [
-      "serviceAccount:gce-sa@cnnx-poc-infra.iam.gserviceaccount.com"
+      "serviceAccount:rundeck@cnnx-infra-admin.iam.gserviceaccount.com"
     ]
   }
 }
