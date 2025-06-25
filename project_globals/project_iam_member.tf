@@ -234,60 +234,6 @@ resource "google_project_iam_member" "SA_vuln-patching-notifications--cnnx-poc-i
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--compute_networkUser" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/compute.networkUser"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--dataproc_worker" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/dataproc.worker"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--logging_logWriter" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/logging.logWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--monitoring_metricWriter" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.metricWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.viewer"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--compute_osLogin" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/compute.osLogin"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--compute_viewer" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/compute.viewer"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--dataproc_editor" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/dataproc.editor"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_fasttrack-hdp--cnnx-poc-infra--iap_admin" {
-  member = "serviceAccount:fasttrack-hdp@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/iap.admin"
-  project = "${var.gcp_project}"
-}
-
 resource "google_project_iam_member" "SA_dataproc-service-account--cnnx-poc-infra--compute_networkUser" {
   member = "serviceAccount:service-832312746254@dataproc-accounts.iam.gserviceaccount.com"
   role = "roles/compute.networkUser"
@@ -336,45 +282,3 @@ resource "google_project_iam_member" "SA_firebase-service-account--firebase-sa-m
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--logging_logWriter" {
-  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/logging.logWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--monitoring_metricWriter" {
-  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.metricWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_ncftp-stage--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:ncftp-stage@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.viewer"
-  project = "${var.gcp_project}"
-}
-
-
-resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--logging_logWriter" {
-  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/logging.logWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--monitoring_metricWriter" {
-  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.metricWriter"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_rt-backup--cnnx-poc-infra--monitoring_viewer" {
-  member = "serviceAccount:rt-backup@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/monitoring.viewer"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_rundeck--cnnx-poc-infra--compute_viewer" {
-  member = "serviceAccount:rundeck@cnnx-infra-admin.iam.gserviceaccount.com"
-  role = "roles/compute.viewer"
-  project = "${var.gcp_project}"
-}
