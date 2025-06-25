@@ -5,13 +5,6 @@ resource "google_service_account" "SA_gce-sa" {
   display_name = "gce-sa"
 }
 
-resource "google_service_account" "SA_dataproc" {
-  account_id   = "dataproc"
-  description  = ""
-  disabled     = "false"
-  display_name = "dataproc-test"
-}
-
 resource "google_service_account" "SA_migration-manager" {
   account_id   = "migration-manager"
   description  = "Migration Mmanager SA"
@@ -26,23 +19,3 @@ resource "google_service_account" "SA_migration-cloud-extension" {
   display_name = "migration-cloud-extension"
 }
 
-resource "google_service_account" "SA_fasttrack-hdp" {
-  account_id   = "fasttrack-hdp"
-  description  = "fasttrack-hdp SA"
-  disabled     = "false"
-  display_name = "fasttrack-hdp"
-}
-
-resource "google_service_account" "SA_ncftp-stage" {
-  account_id   = "ncftp-stage"
-  description  = "ncftp SA"
-  disabled     = "false"
-  display_name = "ncftp-stage"
-}
-
-resource "google_service_account" "SA_rt-backup" {
-  account_id   = "rt-backup"
-  description  = "rt-backup poc"
-  disabled     = "false"
-  display_name = "rt-backup"
-}
