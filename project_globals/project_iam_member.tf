@@ -156,18 +156,6 @@ resource "google_project_iam_member" "SA_gce_api--cnnx-poc-infra--compute_instan
   project = "${var.gcp_project}"
 }
 
-resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--dataproc_worker" {
-  member = "serviceAccount:dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/dataproc.worker"
-  project = "${var.gcp_project}"
-}
-
-resource "google_project_iam_member" "SA_dataproc--cnnx-poc-infra--compute_networkUser" {
-  member = "serviceAccount:dataproc@cnnx-poc-infra.iam.gserviceaccount.com"
-  role = "roles/compute.networkUser"
-  project = "${var.gcp_project}"
-}
-
 resource "google_project_iam_member" "SA_migration-manager--cnnx-poc-infra--cloudmigration_inframanager" {
   member = "serviceAccount:migration-manager@cnnx-poc-infra.iam.gserviceaccount.com"
   role = "roles/cloudmigration.inframanager"
