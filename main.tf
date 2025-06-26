@@ -9,10 +9,6 @@ variable "TFC_WORKSPACE_NAME" {
   type        = string
 }
 
-variable "gcp_project" {
-  type = string
-}
-
 provider "google" {
   project = "${var.TFC_WORKSPACE_NAME}"
 }
