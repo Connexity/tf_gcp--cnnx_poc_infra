@@ -3,8 +3,15 @@ terraform {
   }
 }
 
+variable "TFC_WORKSPACE_NAME" {
+  default     = ""
+  description = "Terraform Cloud workspace name"
+  type        = string
+}
+
 variable "gcp_project" {
   type = string
+  default = var.TFC_WORKSPACE_NAME
 }
 
 provider "google" {
