@@ -29,7 +29,6 @@ jobs:
       run: echo "project=${REPO##*--}" >> $GITHUB_OUTPUT
     - run: echo "TF_VAR_gcp_project=${{ steps.project_split.outputs.project }}" >> $GITHUB_ENV
     - run: echo "TF_WORKSPACE=${{ steps.project_split.outputs.project }}" >> $GITHUB_ENV
-    - run: echo ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
     
     # Checkout the repository to the GitHub Actions runner
     - uses: actions/checkout@v4
