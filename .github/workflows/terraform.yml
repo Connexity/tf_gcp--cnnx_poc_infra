@@ -1,0 +1,48 @@
+name: 'Terraform test'
+env:
+  TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+#  TF_VAR_gcp_project: ""
+#  TFC_WORKSPACE_NAME: ""
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # determine project/workspace
+    - name: Split out project name
+      env:
+        REPO: ${{ github.repository }}
+      id:project_split
+      run: echo "project=${REPO##*--"} >> $GITHUB_OUTPUT
+    - run: echo "TF_VAR_gcp_project=${{ steps.project_split.outputs.fragment }}" >> $GITHUB_ENV
+    - run: echo "TFC_WORKSPACE_NAME=${{ steps.project_split.outputs.fragment }}" >> $GITHUB_ENV
+    
+    # Checkout the repository to the GitHub Actions runner
+    - uses: actions/checkout@v4
+    - uses: hashicorp/setup-terraform@v3
+      with:
+        cli_config_credentials_token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
+    
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan     
+       
+    # - name: Terraform Apply
+    #   if: github.ref == 'refs/heads/"master"' && github.event_name == 'push'
+    #   run: terraform apply -auto-approve -input=false
