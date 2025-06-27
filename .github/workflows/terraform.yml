@@ -25,9 +25,9 @@ jobs:
       env:
         REPO: ${{ github.repository }}
       id: project_split
-      run: echo "project=${REPO##*--"} >> $GITHUB_OUTPUT
-    - run: echo "TF_VAR_gcp_project=${{ steps.project_split.outputs.fragment }}" >> $GITHUB_ENV
-    - run: echo "TFC_WORKSPACE_NAME=${{ steps.project_split.outputs.fragment }}" >> $GITHUB_ENV
+      run: echo "project=${REPO##*--"}" >> $GITHUB_OUTPUT
+    - run: echo "TF_VAR_gcp_project=${{ steps.project_split.outputs.project }}" >> $GITHUB_ENV
+    - run: echo "TFC_WORKSPACE_NAME=${{ steps.project_split.outputs.project }}" >> $GITHUB_ENV
     
     # Checkout the repository to the GitHub Actions runner
     - uses: actions/checkout@v4
