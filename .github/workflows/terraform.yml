@@ -1,7 +1,7 @@
 name: 'Terraform test'
-#env:
+env:
 #  TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
-#  TF_IN_AUTOMATION: ""
+  TF_IN_AUTOMATION: ""
 #  TF_VAR_gcp_project: ""
 #  TFC_WORKSPACE_NAME: ""
 on: [push]
@@ -13,7 +13,7 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: plan
+    environment: planning
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
 #     defaults:
