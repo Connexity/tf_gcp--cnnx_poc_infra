@@ -7,9 +7,6 @@ variable "gcp_project" {
 terraform {
   cloud {
     organization = "Connexity"
-    workspaces {
-      name = "${var.gcp_project}"
-    }
   }
 }
 
