@@ -1,12 +1,13 @@
-terraform {
-  backend "http" {
-  }
-}
-
 variable "gcp_project" {
   default     = ""
   description = "$TF_VAR_gcp_project env variable. Copied from $TFC_WORKSPACE_NAME env variable"
   type        = string
+}
+
+terraform {
+  cloud {
+    organization = "Connexity"
+  }
 }
 
 provider "google" {
