@@ -1,5 +1,5 @@
 name: 'Terraform test'
-env:
+#env:
 #  TF_TOKEN_app_terraform_io: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
 #  TF_IN_AUTOMATION: ""
 #  TF_VAR_gcp_project: ""
